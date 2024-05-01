@@ -12,5 +12,5 @@ export default defineConfig({
       assets: '/src/assets',
     },
   },
-  base: '/camper-rentals/',
+  base: 'https://github.com/imlaamer/camper-rentals',
 });
