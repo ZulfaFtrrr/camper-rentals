@@ -5,7 +5,7 @@ const SecondPage = () => {
     <Container>
       <Block>
         <Title>Second Page</Title>
-        <StyledLink to="/second/5">Half</StyledLink>
+        <StyledLink to="/second/5">Half page</StyledLink>
       </Block>
     </Container>
   );
