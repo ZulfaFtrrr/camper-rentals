@@ -6,10 +6,10 @@ import HalfPage from 'pages/HalfPage/HalfPage';
 import ErrorPage from 'pages/ErrorPage/ErrorPage';
 import { AppWrapper } from './App.styled';
 
-const test = import.meta.env.VITE_API_TEST;
+const API_ENDPOINT = import.meta.env.VITE_API_TEST;
 
 function App() {
-  console.log(test);
+  console.log(API_ENDPOINT);
   return (
     <AppWrapper>
       <Routes>
