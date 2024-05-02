@@ -15,6 +15,7 @@
   width: 290px;
   height: 310px;
   overflow: hidden;
+  background-color: var(--secondary-light-grey);
 }
 
 .cardsItem img {

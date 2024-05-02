@@ -45,6 +45,11 @@
   border: 1px solid rgba(71, 84, 103, 0.2);
 }
 
+.load-more-cards-btn:is(:hover, :focus) {
+  background-color: transparent;
+  border-color: var(--hover-red);
+}
+
 .button:focus {
   /* outline: 2px solid var(--secondary-blue); */
 }
