@@ -1,0 +1,22 @@
+.navLink {
+  padding: 10px 0;
+  align-self: center;
+  border: 1px solid transparent;
+  cursor: pointer;
+  /* color: #3e404e; */
+  color: #475467;
+}
+
+.active {
+  color: #f2f4f7;
+  /* color: var(--secondary-red); */
+
+  border-bottom: 2px solid var(--secondary-red);
+}
+
+.navWrapper {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  font-size: 20px;
+}

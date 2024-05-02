@@ -1,7 +1,7 @@
 # <p>Camper Rentals</p>
 
 <p>
-   <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript"><img src="https://img.shields.io/badge/JavaScript-red" /></a>
+    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript"><img src="https://img.shields.io/badge/JavaScript-red" /></a>
     <a href="https://react.dev/"><img src="https://img.shields.io/badge/React-yellow"  /></a>
     <a href="https://redux.js.org/"><img src="https://img.shields.io/badge/Redux-gray"  /></a>
     <a href="https://redux-toolkit.js.org/"><img src="https://img.shields.io/badge/reduxToolkit-red" /></a>
@@ -17,38 +17,38 @@
 
 ---
 
-## Description
+## Опис застосунку
 
 ---
 
-## Features
+## Функціонал
 
 ---
 
-## Live page
+## Жива сторінка
 
 **_<a href="https://imlaamer.github.io/camper-rentals/">Camper Rentals</a>_**
 
 ---
 
-## Installation
+## Розгортання
 
-To run this project, you need to install <a href="https://nodejs.org/en">Node.js
-v20.12.2</a>
+Для того щоб запустити цей проект вам необхідно встановити
+<a href="https://nodejs.org/en">Node.js v20.12.2</a>
 
-#### 1. Clone the project repository
+#### 1. Склонуйте репозиторій проекту
 
 ```
     git clone https://github.com/imlaamer/camper-rentals.git
 ```
 
-#### 2. Install dependencies
+#### 2. Встановіть залежності
 
 ```
     npm i
 ```
 
-#### 3. Start the server
+#### 3. Запустіть сервер
 
 ```
     npm run dev
@@ -56,6 +56,6 @@ v20.12.2</a>
 
 ---
 
-**_Enjoy your time and have a great experience using Camper Rentals!_**
+### **_Приємного настрою та гарного досвіду у використанні Camper Rentals!_**
 
 ---

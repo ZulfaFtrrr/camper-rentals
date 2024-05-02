@@ -1,0 +1,106 @@
+.cardsItem {
+  display: flex;
+  gap: 24px;
+
+  width: 886px;
+  padding: 24px;
+
+  border-radius: 20px;
+  border: 1px solid rgba(16, 24, 40, 0.2);
+  background: var(--primary-white);
+  margin-bottom: 32px;
+}
+
+.imageContainer {
+  width: 290px;
+  height: 310px;
+  overflow: hidden;
+}
+
+.cardsItem img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+  /* background: url(<path-to-image>) lightgray -57px -4.651px / 195.679% 103.001% no-repeat; */
+}
+
+.cardInfo {
+  width: 526px;
+}
+
+.cardTitle {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.titlePriceIconBox {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  margin-bottom: 8px;
+}
+
+.priceHeartBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.priceText {
+  composes: cardTitle;
+}
+
+.reviewsText {
+  /* text-decoration: underline; */
+  border-bottom: 1px solid currentColor;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  margin-right: 16px;
+}
+.locationText {
+  composes: reviewsText;
+  border: none;
+}
+
+.iconsReviewsLocationBox {
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+  /* justify-content: center; */
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.detailsText {
+  max-width: 526px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--primary-gray);
+  margin-bottom: 24px;
+}
+
+.filtersWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.filtersBox {
+  max-width: max-content;
+
+  display: flex;
+  padding: 12px 18px;
+  align-items: center;
+  gap: 8px;
+  border-radius: 100px;
+  background: var(--secondary-light-grey);
+}

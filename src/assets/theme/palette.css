@@ -1,0 +1,22 @@
+:root {
+  --toastify-color-success: #5cb85c;
+  --toastify-icon-color-success: var(--toastify-color-success);
+
+  --toastify-color-error: #ef5050;
+  --toastify-icon-color-error: var(--toastify-color-error);
+
+  --primary-gray: #475467;
+  --primary-dark: #101828;
+  --primary-white: #fff;
+
+  --secondary-red: #e44848;
+  --secondary-white-smoke: #f7f7f7;
+  --secondary-light-grey: #f2f4f7;
+  --secondary-yellow: #ffc531;
+
+  --hover-red: #d84343;
+
+  --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  --backdrop: rgba(17, 18, 19, 0.4);
+  /* --box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.34); */
+}

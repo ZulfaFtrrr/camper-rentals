@@ -1,27 +1,37 @@
 import { Route, Routes } from 'react-router-dom';
-import SharedLayout from 'components/SharedLayout/SharedLayout';
-import FirstPage from 'pages/FirstPage/FirstPage';
-import SecondPage from 'pages/SecondPage/SecondPage';
-import HalfPage from 'pages/HalfPage/HalfPage';
-import ErrorPage from 'pages/ErrorPage/ErrorPage';
-import { AppWrapper } from './App.styled';
+import { lazy } from 'react';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import './assets/styles/global.module.css';
 
-const API_ENDPOINT = import.meta.env.VITE_API_TEST;
+import SharedLayout from 'components/SharedLayout/SharedLayout';
+// import Spinner from './components/Spinner/Spinner';
+// import Loader from './components/Loader/Loader';
+
+// const API_ENDPOINT = import.meta.env.API_ENDPOINT;
+// console.log(API_ENDPOINT);
+
+const HomePage = lazy(() => import('pages/HomePage/HomePage'));
+const CatalogPage = lazy(() => import('pages/CatalogPage/CatalogPage'));
+const FavoritesPage = lazy(() => import('pages/FavoritesPage/FavoritesPage'));
+const ErrorPage = lazy(() => import('pages/ErrorPage/ErrorPage'));
+// const NotFoundPage = lazy(() => import('pages/NotFoundPage/NotFoundPage'));
 
 function App() {
-  console.log(API_ENDPOINT);
   return (
-    <AppWrapper>
-      <Routes>
-        <Route path="/" element={<SharedLayout />}>
-          <Route path="/first" element={<FirstPage />} />
-          <Route path="/second" element={<SecondPage />}>
-            <Route path=":half" element={<HalfPage />} />
-          </Route>
-          <Route path="*" element={<ErrorPage />} />
-        </Route>
-      </Routes>
-    </AppWrapper>
+    // <AppWrapper>
+    //  <Suspense fallback={<Loader />}>
+    <Routes>
+      <Route path="/" element={<SharedLayout />}>
+        <Route index element={<HomePage />} />
+        <Route element={<CatalogPage />} path="/catalog" />
+        <Route element={<FavoritesPage />} path="/favorites" />
+
+        <Route path="*" element={<ErrorPage />} />
+      </Route>
+    </Routes>
+    // </Suspense>
+    // </AppWrapper>
   );
 }
 export default App;

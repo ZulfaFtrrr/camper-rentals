@@ -10,8 +10,13 @@ export default defineConfig({
       components: '/src/components',
       pages: '/src/pages',
       assets: '/src/assets',
+      // helpers: '/src/helpers',
+      // styles: '/src/styles',
+      // service: '/src/service',
+      // reduxState: '/src/reduxState',
     },
   },
   base: '/camper-rentals',
+  //camper-rentals
   // https://github.com/imlaamer/camper-rentals
 });

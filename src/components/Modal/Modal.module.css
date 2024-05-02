@@ -1,0 +1,78 @@
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--backdrop);
+  backdrop-filter: blur(2px);
+  z-index: 100;
+}
+
+.container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 24px 12px;
+  box-sizing: border-box;
+  border-radius: 10px;
+  background-color: var(--primary-white);
+  z-index: 101;
+}
+
+.closeBtn {
+  position: absolute;
+  top: 26px;
+  right: 12px;
+  font-size: 28px;
+  line-height: 0.6;
+  color: var(--primary-sky-blue);
+  border: none;
+  background: none;
+  cursor: pointer;
+  z-index: 200;
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    padding: 32px 24px;
+  }
+}
+
+.setting-card {
+  padding: 32px 12px;
+}
+
+.managment-card,
+.my-daily-norma,
+.add-water,
+.setting-card {
+  width: 280px;
+}
+
+@media screen and (min-width: 768px) {
+  .setting-card {
+    width: 704px;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+  .add-water,
+  .my-daily-norma {
+    width: 704px;
+  }
+
+  .managment-card {
+    width: 592px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .setting-card {
+    width: 1008px;
+  }
+  .add-water,
+  .my-daily-norma {
+    width: 592px;
+  }
+}
