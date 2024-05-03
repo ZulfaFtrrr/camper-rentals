@@ -50,6 +50,10 @@
   border-color: var(--hover-red);
 }
 
+.booking-submit-btn {
+  margin: 0;
+}
+
 .button:focus {
   /* outline: 2px solid var(--secondary-blue); */
 }

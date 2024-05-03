@@ -1,0 +1,49 @@
+.avatar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60px;
+  height: 60px;
+  background-color: var(--secondary-light-grey);
+  border-radius: 50%;
+  color: var(--secondary-red);
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+/* .avatar p {
+  display: block;
+  font-size: 45px;
+  color: var(--primary-white);
+} */
+
+.commentContainer {
+  margin-bottom: 24px;
+}
+
+.commentBox {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.nameStarsWrapper {
+  font-size: 18px;
+
+  font-weight: 600;
+  line-height: 1.33;
+}
+.nameText {
+  margin-bottom: 4px;
+}
+
+.commentText {
+  color: var(--primary-gray);
+
+  font-size: 16px;
+
+  font-weight: 400;
+  line-height: 1.5;
+}

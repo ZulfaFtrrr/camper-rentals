@@ -1,109 +1,98 @@
 import Icon from '../../Icon/Icon';
-import image from '../../../assets/static/images/car-test.png';
 import Button from '../../Button/Button';
 
 import s from './CardItem.module.css';
+import { useState } from 'react';
+import Modal from '../../Modal/Modal';
+
+import {
+  formatPrice,
+  countReviews,
+  formatLocation,
+} from '../../../helpers/format-card-info';
+import CardModalDetails from './CardModalDetails/CardModalDetails';
+import Services from '../Services/Services';
 
 const CardItem = ({ advert }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isAllFeatures, setIsAllFeatures] = useState(false);
+
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+    setIsAllFeatures(true); // ????
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setIsAllFeatures(false); // ????
+  };
+
   //   console.log(advert);
   const {
     name,
     price,
     rating,
     location,
-    adults,
-    children,
-    engine,
-    transmission,
-    form,
+
     description,
-    details: { kitchen, beds, shower, TV },
+
     gallery,
     reviews,
   } = advert;
 
-  const formatedPrice = price.toLocaleString('en-US', {
-    style: 'currency',
-    currency: 'EUR',
-  });
-  //?
-
-  const reviewsNumber = reviews?.reduce((total) => {
-    return total + 1;
-  }, 0);
-
-  const formatedLocation = location?.split(',').reverse().join(', ');
-  const formatedEngine = engine?.charAt(0).toUpperCase() + engine?.slice(1);
-  //   const formatedTransmission =
-  //     transmission?.charAt(0).toUpperCase() + transmission?.slice(1);
+  const formatedPrice = formatPrice(price);
+  const countedReviews = countReviews(reviews);
+  const formatedLocation = formatLocation(location);
 
   return (
-    <li className={s.cardsItem}>
-      {/* <div className={s.cardBox}> */}
-      <div className={s.imageContainer}>
-        <img src={gallery[0]} alt="car" />
-      </div>
-      <div className={s.cardInfo}>
-        <div className={s.titlePriceIconBox}>
-          <h2 className={s.cardTitle}>{name}</h2>
-          <div className={s.priceHeartBox}>
-            <p className={s.priceText}>{formatedPrice}</p>
-            <Icon id={'heart'} size="24" />
-          </div>
+    <>
+      <li className={s.cardsItem}>
+        {/* <div className={s.cardBox}> */}
+        <div className={s.imageContainer}>
+          <img src={gallery[0]} alt={name} />
         </div>
+        <div className={s.cardInfo}>
+          <div className={s.titlePriceIconBox}>
+            <h2 className={s.cardTitle}>{name}</h2>
+            <div className={s.priceHeartBox}>
+              <p className={s.priceText}>{formatedPrice}</p>
+              <Icon id={'heart'} size="24" />
+            </div>
+          </div>
 
-        <div className={s.iconsReviewsLocationBox}>
-          <Icon id={'star'} size="16" />
-          <p className={s.reviewsText}>
-            {rating}({reviewsNumber} Reviews)
-          </p>
-          <Icon id={'map-pin'} size="16" />
-          <p className={s.locationText}>{formatedLocation}</p>
+          <div className={s.iconsReviewsLocationBox}>
+            <Icon id={'star'} size="16" />
+            <p className={s.reviewsText}>
+              {rating}({countedReviews} Reviews)
+            </p>
+            <Icon id={'map-pin'} size="16" />
+            <p className={s.locationText}>{formatedLocation}</p>
+          </div>
+          <p className={s.detailsText}>{description}</p>
+          <Services advert={advert} isAllFeatures={isAllFeatures} />
+          <Button className="showMoreCardBtn" onClick={handleOpenModal}>
+            Show more
+          </Button>
         </div>
-        <p className={s.detailsText}>{description}</p>
+        {/* </div> */}
+      </li>
+      {isModalOpen && (
+        <Modal className="card-modal" onClose={handleCloseModal}>
+          <CardModalDetails
+            advert={advert}
+            onClose={handleCloseModal}
+            isAllFeatures={isAllFeatures}
+          />
+        </Modal>
+      )}
+    </>
+  );
+};
 
-        <div className={s.filtersWrapper}>
-          <div className={s.filtersBox}>
-            <Icon id={'people'} fill="#101828" stroke="none" />
-            <p>{adults} adults</p>
-          </div>
-          {transmission === 'automatic' && (
-            <div className={s.filtersBox}>
-              <Icon id={'gearbox'} />
-              <p>Automatic</p>
-            </div>
-          )}
-          <div className={s.filtersBox}>
-            <Icon id={'fuel'} fill="#101828" stroke="none" />
-            <p>{formatedEngine}</p>
-          </div>
-          {kitchen && (
-            <div className={s.filtersBox}>
-              <Icon id={'food'} stroke="#101828" />
-              <p>Kitchen</p>
-            </div>
-          )}
-          <div className={s.filtersBox}>
-            <Icon id={'bed'} />
-            <p>{beds} beds</p>
-          </div>
-          <div className={s.filtersBox}>
-            <Icon id={'ac'} fill="#101828" stroke="none" />
-            <p>AC</p>
-          </div>
-          {shower !== 0 && (
-            <div className={s.filtersBox}>
-              <Icon id={'shower'} />
-              <p>Shower/WC</p>
-            </div>
-          )}
-          {TV !== 0 && (
-            <div className={s.filtersBox}>
-              <Icon id={'tv'} />
-              <p>TV</p>
-            </div>
-          )}
-          {/* {form === 'van' && (
+export default CardItem;
+
+{
+  /* {form === 'van' && (
             <div className={s.filtersBox}>
               <Icon id={'fuvanlvanly'} />
               <p>Van</p>
@@ -120,16 +109,8 @@ const CardItem = ({ advert }) => {
               <Icon id={'alcove'} size="40" />
               <p>Alcove</p>
             </div>
-          )} */}
-        </div>
-        <Button className="showMoreCardBtn">Show more</Button>
-      </div>
-      {/* </div> */}
-    </li>
-  );
-};
-
-export default CardItem;
+          )} */
+}
 
 // <svg
 //   xmlns="http://www.w3.org/2000/svg"

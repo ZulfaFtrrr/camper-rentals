@@ -31,7 +31,8 @@
     "react-helmet-async": "^2.0.4",
     "axios": "^1.6.8",
     "yup": "^1.4.0",
-    "react-toastify": "^10.0.5"
+    "react-toastify": "^10.0.5",
+    "react-use": "^17.5.0"
   },
   "devDependencies": {
     "@swc/cli": "^0.1.62",

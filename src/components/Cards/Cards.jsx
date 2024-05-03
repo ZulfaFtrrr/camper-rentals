@@ -22,7 +22,6 @@ const Cards = () => {
   }, [dispatch]);
 
   const adverts = useSelector(selectAllAdverts);
-  console.log(adverts);
 
   //   const all = useSelector(getAdverts);
   //   console.log(all);
@@ -30,7 +29,7 @@ const Cards = () => {
   return (
     <ul className={s.cardsList}>
       {adverts?.map((advert) => (
-        <CardItem key={advert.id} advert={advert} />
+        <CardItem key={advert._id} advert={advert} />
       ))}
 
       <Icon id={'bed'} />

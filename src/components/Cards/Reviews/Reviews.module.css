@@ -1,0 +1,8 @@
+.reviewsWrapper {
+  display: flex;
+  gap: 24px;
+}
+
+.reviewsList {
+  width: 430px;
+}

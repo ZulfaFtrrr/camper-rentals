@@ -1,0 +1,37 @@
+.featuresWrapper {
+  display: flex;
+  /* justify-content: space-between; */
+  gap: 24px;
+}
+
+.vehicleDetailsTitle {
+  max-width: 430px;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.2;
+  padding-bottom: 24px;
+  border-bottom: var(--border-gray);
+}
+
+.vehicleDetailsList {
+  max-width: 430px;
+  margin-top: 24px;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.33;
+}
+
+.vehicleDetailsItem {
+  display: flex;
+  justify-content: space-between;
+}
+
+.vehicleDetailsItem:not(:last-child) {
+  margin-bottom: 14px;
+}
+
+.vehicleDetailsSubTitle {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.33;
+}
