@@ -36,6 +36,7 @@
   line-height: 1.333;
 }
 
+.favorites-page-container,
 .catalog-page-container {
   max-width: 1312px;
 }

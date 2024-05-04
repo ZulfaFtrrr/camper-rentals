@@ -8,6 +8,7 @@ const Button = ({
   className,
   onClick,
   loading,
+
   ...rest
 }) => {
   const buttonClasses = `${s.button} ${s[className]}`;

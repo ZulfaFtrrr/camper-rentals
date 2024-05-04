@@ -29,7 +29,7 @@ const CardModalDetails = ({ advert, isAllFeatures }) => {
 
       <div className={s.scrollContainer}>
         <div className={s.iconsReviewsLocationBox}>
-          <Icon id={'star'} size="16" />
+          <Icon id={'star'} size="20" fill="#ffc531" stroke="ffc531" />
           <p className={s.reviewsText}>
             {rating}({countedReviews} Reviews)
           </p>

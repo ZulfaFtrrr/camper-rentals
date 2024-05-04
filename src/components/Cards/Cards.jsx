@@ -4,17 +4,24 @@ import s from './Cards.module.css';
 import {
   getAdverts,
   selectAllAdverts,
+  selectFavorites,
 } from '../../redux/adverts/advertsSelectors';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { fetchAdverts } from '../../redux/adverts/advertsOperations';
 import Icon from '../Icon/Icon';
+import { useLocation } from 'react-use';
 
-const Cards = () => {
+const Cards = ({ visibleAdverts }) => {
+  const location = useLocation();
+  const isFavoritesPage = location.pathname === '/camper-rentals/favorites';
+
+  const favorites = useSelector(selectFavorites);
+
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchAdverts())
       .unwrap()
-      .then(() => console.log('Success'))
+      .then()
       .catch(
         () => console.eror('Error')
         // toast.error('Something went wrong. Please try again later!')
@@ -23,14 +30,23 @@ const Cards = () => {
 
   const adverts = useSelector(selectAllAdverts);
 
-  //   const all = useSelector(getAdverts);
-  //   console.log(all);
-
   return (
     <ul className={s.cardsList}>
-      {adverts?.map((advert) => (
-        <CardItem key={advert._id} advert={advert} />
-      ))}
+      {!isFavoritesPage &&
+        adverts
+          ?.slice(0, visibleAdverts)
+          .map((advert) => <CardItem key={advert._id} advert={advert} />)}
+
+      {isFavoritesPage &&
+        favorites
+          .slice(0, visibleAdverts)
+          .map((advert) => (
+            <CardItem
+              key={advert._id}
+              advert={advert}
+              isFavoritesPage={isFavoritesPage}
+            />
+          ))}
 
       <Icon id={'bed'} />
       <Icon id={'water'} />
@@ -52,6 +68,7 @@ const Cards = () => {
       <Icon id={'conditioner'} />
       <Icon id={'cd'} />
       <Icon id={'star'} />
+      <Icon id={'star'} fill="none" stroke="none" />
       <Icon id={'cross'} />
       <Icon id={'gearbox'} size="32" />
       <Icon id={'food'} size="32" stroke="#101828" />

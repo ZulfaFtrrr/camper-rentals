@@ -2,7 +2,7 @@ import Icon from '../../Icon/Icon';
 import Button from '../../Button/Button';
 
 import s from './CardItem.module.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Modal from '../../Modal/Modal';
 
 import {
@@ -13,32 +13,53 @@ import {
 import CardModalDetails from './CardModalDetails/CardModalDetails';
 import Services from '../Services/Services';
 
-const CardItem = ({ advert }) => {
+import {
+  addToFavorites,
+  removeFromFavorites,
+} from '../../../redux/adverts/advertsSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectFavorites } from '../../../redux/adverts/advertsSelectors';
+
+const CardItem = ({ advert, isFavoritesPage }) => {
+  const dispatch = useDispatch();
   const [isModalOpen, setIsModalOpen] = useState(false);
+
   const [isAllFeatures, setIsAllFeatures] = useState(false);
+  const [isFavorite, setIsFavorite] = useState(false);
+  const favorites = useSelector(selectFavorites);
+
+  useEffect(() => {
+    if (isFavoritesPage) {
+      return setIsFavorite(true);
+    }
+    const isAdvertInFavorites = favorites?.some(
+      (favorite) => favorite._id === advert._id
+    );
+    setIsFavorite(isAdvertInFavorites);
+  }, [favorites, advert, isFavoritesPage]);
+
+  const { name, price, rating, location, description, gallery, reviews } =
+    advert;
 
   const handleOpenModal = () => {
     setIsModalOpen(true);
-    setIsAllFeatures(true); // ????
+    setIsAllFeatures(true);
   };
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
-    setIsAllFeatures(false); // ????
+    setIsAllFeatures(false);
   };
 
-  //   console.log(advert);
-  const {
-    name,
-    price,
-    rating,
-    location,
+  const handleToggleFavorite = () => {
+    setIsFavorite((prevState) => !prevState);
 
-    description,
-
-    gallery,
-    reviews,
-  } = advert;
+    if (!isFavorite) {
+      dispatch(addToFavorites(advert));
+    } else {
+      dispatch(removeFromFavorites(advert._id));
+    }
+  };
 
   const formatedPrice = formatPrice(price);
   const countedReviews = countReviews(reviews);
@@ -56,12 +77,23 @@ const CardItem = ({ advert }) => {
             <h2 className={s.cardTitle}>{name}</h2>
             <div className={s.priceHeartBox}>
               <p className={s.priceText}>{formatedPrice}</p>
-              <Icon id={'heart'} size="24" />
+              <button
+                type="button"
+                className={s.favoriteBtn}
+                onClick={handleToggleFavorite}
+              >
+                <Icon
+                  id={'heart'}
+                  size="24"
+                  fill={isFavorite ? '#E44848' : 'none'}
+                  stroke={isFavorite ? '#E44848' : '#101828'}
+                />
+              </button>
             </div>
           </div>
 
           <div className={s.iconsReviewsLocationBox}>
-            <Icon id={'star'} size="16" />
+            <Icon id={'star'} size="20" fill="#ffc531" stroke="ffc531" />
             <p className={s.reviewsText}>
               {rating}({countedReviews} Reviews)
             </p>

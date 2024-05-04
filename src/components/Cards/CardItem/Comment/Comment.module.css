@@ -39,6 +39,10 @@
   margin-bottom: 4px;
 }
 
+.starsWrapper {
+  display: flex;
+}
+
 .commentText {
   color: var(--primary-gray);
 

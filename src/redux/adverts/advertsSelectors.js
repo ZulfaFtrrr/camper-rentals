@@ -7,6 +7,7 @@ export const selectIsLoading = createSelector(
   (adverts) => adverts.isLoading //
 );
 
+//---DELETE !
 export const selectAdvertById = createSelector(
   selectAdverts,
   (adverts) => adverts.advertById //
@@ -21,6 +22,21 @@ export const selectError = createSelector(
   selectAdverts,
   (adverts) => adverts.error //
 );
+
+export const selectFavorites = createSelector(
+  selectAdverts,
+  (adverts) => adverts.favorites //
+);
+
+export const selectPage = createSelector(
+  selectAdverts,
+  (adverts) => adverts.page //
+);
+
+// export const selectFavorite = createSelector(
+//   selectAdverts,
+//   (adverts) => adverts.isFavorite //
+// );
 
 // export const getLoading = (state) => state.auth.loading;
 

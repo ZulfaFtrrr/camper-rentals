@@ -3,15 +3,39 @@ import { fetchAdverts, fetchAdvertById } from './advertsOperations.js';
 
 const initialState = {
   adverts: [],
-  advertById: null,
+  // advertById: null
   isLoading: false,
   error: null,
+  page: 1,
+  // isFavorite: false,
+  favorites: [],
 };
 
 export const advertsSlice = createSlice({
   name: 'adverts',
   initialState,
-  reducers: {},
+  reducers: {
+    //----------------pages
+    incrementPage: (state) => {
+      state.page = state.page + 1;
+    },
+    resetPage: (state) => {
+      state.page = 1;
+    },
+
+    //----------------favorites
+
+    addToFavorites: (state, action) => {
+      state.favorites = [...state.favorites, action.payload];
+    },
+
+    removeFromFavorites: (state, action) => {
+      const index = state.favorites.findIndex(
+        (advert) => advert._id === action.payload
+      );
+      state.favorites.splice(index, 1);
+    },
+  },
   extraReducers: (builder) =>
     builder
       //---------------fetchAdverts
@@ -20,7 +44,7 @@ export const advertsSlice = createSlice({
         state.isLoading = false;
         state.adverts = action.payload;
       })
-      //---------------fetchAdvertById
+      //-------DELETE ??--------fetchAdvertById
       .addCase(fetchAdvertById.fulfilled, (state, action) => {
         state.isLoading = false;
         state.advertById = action.payload;
@@ -41,5 +65,11 @@ export const advertsSlice = createSlice({
         }
       ),
 });
+
+//toggleIsFavorite
+export const { addToFavorites, removeFromFavorites, incrementPage, resetPage } =
+  advertsSlice.actions;
+
+// export const { incrementPage } = postsSlice.actions;
 
 // export const advertsReducer = advertsSlice.reducer;
