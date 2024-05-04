@@ -1,6 +1,9 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
 import { toast } from 'react-toastify';
+import DatePicker from 'react-datepicker';
+
+import 'react-datepicker/dist/react-datepicker.css';
 
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
 import Button from '../../Button/Button';
@@ -8,10 +11,21 @@ import Button from '../../Button/Button';
 import { bookingFormSchema } from '../../../schemas/bookingFormSchema';
 
 import s from './BookingForm.module.css';
+import { useState } from 'react';
+import Icon from '../../Icon/Icon';
+import CustomInput from './CustomInput/CustomInput';
 
 //{onClose}
 const BookingForm = () => {
   //   const dispatch = useDispatch();
+
+  const [selectedDate, setSelectedDate] = useState(null);
+
+  const [toggleCalendar, setToggleCalendar] = useState(false);
+
+  const handleToggleCalendar = () => {
+    setToggleCalendar(!toggleCalendar);
+  };
 
   const {
     values,
@@ -26,7 +40,7 @@ const BookingForm = () => {
     initialValues: {
       username: '',
       email: '',
-      date: '',
+      date: selectedDate,
       comment: '',
     },
     validationSchema: bookingFormSchema,
@@ -84,7 +98,7 @@ const BookingForm = () => {
         </div>
 
         <div className={s.inputWrapper}>
-          <input
+          {/* <input
             type="text"
             name="date"
             placeholder="Booking date"
@@ -93,7 +107,34 @@ const BookingForm = () => {
             className={`${s.input} ${
               touched.date && errors.date && s.errorInput
             }`}
-          />
+          /> */}
+
+          {/* <div className={s.datePicker}></div> */}
+          <label>
+            <DatePicker
+              customInput={
+                <CustomInput
+                // onClick={handleToggleCalendar}
+                // value={values.date}
+                // handleBlur={handleBlur}
+                // handleChange={handleChange}
+                // touched={touched}
+                // errors={errors}
+                />
+              }
+              // value={values.date}
+              // selected={values.date}
+              // onChange={handleChange}
+              selected={selectedDate}
+              onChange={(date) => setSelectedDate(date)}
+              dateFormat="dd/MM/yyyy"
+              minDate={new Date()}
+              // onClick={handleToggleCalendar}
+              calendarStartDay={1}
+              className={s.bookingCalendar}
+              // closeOnScroll={true}
+            />
+          </label>
           {/* <ErrorMessage
             errorMessage={errors.date}
             touched={touched.date}
@@ -103,6 +144,7 @@ const BookingForm = () => {
           <input
             type="text"
             name="comment"
+            value={values.comment}
             placeholder="Comment"
             onBlur={handleBlur}
             onChange={handleChange}

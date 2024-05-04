@@ -1,0 +1,32 @@
+.inputWrapper {
+  width: 100%;
+}
+
+.input {
+  position: relative;
+  width: 100%;
+  display: flex;
+  padding: 18px;
+  /* flex-direction: column; */
+  align-items: center;
+  /* gap: 10px; */
+  border-radius: 10px;
+  background-color: var(--secondary-white-smoke);
+  outline: none;
+  /* border: 1px solid transperent; */
+  border: none;
+  color: var(--primary-dark);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.25;
+}
+
+.iconBox {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  outline: none;
+  cursor: pointer;
+}
+
+/* class="react-datepicker-wrapper" */

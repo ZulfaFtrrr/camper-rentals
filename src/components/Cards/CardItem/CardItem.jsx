@@ -28,6 +28,7 @@ const CardItem = ({ advert, isFavoritesPage }) => {
   const [isFavorite, setIsFavorite] = useState(false);
   const favorites = useSelector(selectFavorites);
 
+  //переписати - поставити реф на кнопку ?
   useEffect(() => {
     if (isFavoritesPage) {
       return setIsFavorite(true);
