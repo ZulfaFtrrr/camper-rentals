@@ -20,17 +20,19 @@ const HomePage = () => {
         {/* <Meta title="Home Page" /> */}
 
         {/* <div className={s.heroContainer}> */}
-        <h1 className={s.heroTitle}>Camper Rentals</h1>
+        <h1 className={s.heroTitle}>Rent a Campervan</h1>
+        <p className={s.heroSubTitle}>
+          Explore Ukraine in one of our custom-built campervans
+        </p>
         <p className={s.heroText}>
           Our company offers a wide range of camper rental services throughout
-          Ukraine.
-          <br /> Whether you are planning a weekend getaway or a longer
-          adventure, we have the perfect camper for you.
-          <br /> Explore our diverse catalog of campers, each equipped with
-          various amenities to suit your needs. <br />
-          From compact vans for solo travelers to spacious RVs for families, we
-          have options for every type of journey. <br />
-          Start your next adventure with us today!
+          Ukraine. Explore our diverse catalog of campers, each equipped with
+          various amenities to suit your needs. From compact vans for solo
+          travelers to spacious RVs for families, we have options for every type
+          of journey. <br />
+          <span className={s.spanText}>
+            Start your next adventure with us today!
+          </span>
         </p>
         <NavLink
           className={({ isActive }) =>

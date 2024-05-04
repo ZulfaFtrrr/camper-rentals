@@ -6,11 +6,11 @@ const Header = () => {
   return (
     <header>
       {/* <p>Camper Rentals</p> */}
-      {/* <Container className="header-container"> */}
-      {/* <div className={s.headerContainer}> */}
-      <Navigation />
-      {/* </div> */}
-      {/* </Container> */}
+      <Container className="header-container">
+        {/* <div className={s.headerContainer}> */}
+        <Navigation />
+        {/* </div> */}
+      </Container>
     </header>
 
     // <HeaderContainer>
