@@ -21,7 +21,7 @@
 
 <!-- <p style="width: 600px"> -->
 
-Rent a Campervan is a platform that facilitates camper rental services across
+"Camper Rentals" is a platform that facilitates camper rental services across
 Ukraine. The website provides users with the opportunity to explore a diverse
 catalog of custom-built campervans, each equipped with various amenities to suit
 their travel needs. From solo travelers to families, our platform offers options
