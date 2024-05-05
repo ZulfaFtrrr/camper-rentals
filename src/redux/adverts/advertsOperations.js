@@ -7,7 +7,6 @@ export const fetchAdverts = createAsyncThunk(
   async (_, thunkApi) => {
     try {
       const adverts = await apiGetAdverts();
-      // toast.success('Wellcome to the Camper Rentals!');
       return adverts;
     } catch (error) {
       toast.error(error?.message);

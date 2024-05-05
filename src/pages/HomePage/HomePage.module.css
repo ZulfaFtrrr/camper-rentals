@@ -49,14 +49,13 @@
 .spanText {
   display: block;
   padding-top: 10px;
-  font-style: 22px;
+  font-size: 22px;
   font-weight: 600;
 }
 
 .heroBtn {
   max-width: max-content;
   border-radius: 200px;
-
   display: flex;
   justify-content: center;
   align-items: center;

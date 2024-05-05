@@ -28,11 +28,10 @@ const BookingForm = () => {
     },
     validationSchema: bookingFormSchema,
     onSubmit: () => {
-      // console.log(values);
       toast.success('Success booking');
       resetForm();
       setSubmitting(false);
-      window.location.reload(); //reload page on success
+      window.location.reload();
     },
   });
 

@@ -14,7 +14,6 @@ const CatalogPage = () => {
   const adverts = useSelector(selectAllAdverts);
   const visibleAdverts = POSTS_PER_PAGE * page;
   const isShowLoadMoreBtn = visibleAdverts < adverts.length;
-  //page < Math.ceil(total_results / 12
 
   const handleLoadMore = () => {
     setPage(page + 1);
