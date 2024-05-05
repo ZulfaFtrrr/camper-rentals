@@ -17,7 +17,7 @@ export const DatePickerField = forwardRef(function DatePickerField(
         selected={value}
         value={value}
         onChange={(value) => {
-          setFieldValue('date', Date.parse(value));
+          setFieldValue('date', value);
         }}
         formatWeekDay={(nameOfDay) => nameOfDay.toUpperCase().slice(0, 3)}
         dateFormat="dd/MM/yyyy"

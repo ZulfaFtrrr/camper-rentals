@@ -19,7 +19,7 @@ export const bookingFormSchema = Yup.object().shape({
     .matches(EMAIL_REGEX, EMAIL_ERROR_MESSAGE)
     .required(REQUIRED_EMAIL_MESSAGE),
 
-  date: Yup.string().trim().required(REQUIRED_DATE_MESSAGE),
+  date: Yup.date().nullable().required(REQUIRED_DATE_MESSAGE),
 
   comment: Yup.string().trim().min(5, 'Comment is min 5 symbols'),
 });
