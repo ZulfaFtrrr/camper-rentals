@@ -1,11 +1,11 @@
 .featuresWrapper {
+  width: 430px;
   display: flex;
-  /* justify-content: space-between; */
   gap: 24px;
 }
 
 .vehicleDetailsTitle {
-  max-width: 430px;
+  width: 430px;
   font-size: 20px;
   font-weight: 600;
   line-height: 1.2;
@@ -14,7 +14,7 @@
 }
 
 .vehicleDetailsList {
-  max-width: 430px;
+  width: 430px;
   margin-top: 24px;
   font-size: 18px;
   font-weight: 500;

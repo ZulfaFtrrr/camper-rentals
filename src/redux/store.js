@@ -10,19 +10,18 @@ import {
   REGISTER,
 } from 'redux-persist';
 
-import { advertsSlice } from '../redux/adverts/advertsSlice'; //
+import { advertsSlice } from '../redux/adverts/advertsSlice';
 import storage from 'redux-persist/lib/storage';
 
 const advertsConfig = {
   key: 'adverts',
   storage,
-  whitelist: ['adverts', 'page', 'favorites'],
+  whitelist: ['adverts', 'favorites'],
 };
 
 export const store = configureStore({
   reducer: {
     adverts: persistReducer(advertsConfig, advertsSlice.reducer),
-    // filter: filterReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

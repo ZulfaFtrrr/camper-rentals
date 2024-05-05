@@ -1,25 +1,25 @@
+import { forwardRef } from 'react';
 import Icon from '../../../Icon/Icon';
+
 import s from './CustomInput.module.css';
 
-const CustomInput = ({
-  value,
-  onClick,
-  //   handleBlur,
-  //   handleChange,
-  //   touched,
-  //   errors,
-}) => {
+export const CustomInput = forwardRef(function CustomInput(
+  {
+    value,
+    onClick,
+    className,
+  },
+  ref
+) {
   return (
     <div className={s.inputWrapper}>
       <input
+        ref={ref}
         type="text"
         name="date"
         value={value}
         placeholder="Booking date"
-        // onBlur={handleBlur}
-        // onChange={handleChange}
-        // className={`${s.input} ${touched.date && errors.date && s.errorInput}`}
-        className={s.input}
+        className={`${s.input} ${className}`}
         onClick={onClick}
         readOnly
       />
@@ -28,6 +28,5 @@ const CustomInput = ({
       </div>
     </div>
   );
-};
+});
 
-export default CustomInput;

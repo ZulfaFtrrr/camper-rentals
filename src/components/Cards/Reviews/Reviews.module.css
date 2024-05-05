@@ -4,5 +4,6 @@
 }
 
 .reviewsList {
+  box-sizing: border-box;
   width: 430px;
 }

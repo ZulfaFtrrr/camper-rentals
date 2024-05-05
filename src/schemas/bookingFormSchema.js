@@ -5,6 +5,7 @@ import {
   REQUIRED_NAME_MESSAGE,
   EMAIL_ERROR_MESSAGE,
   REQUIRED_EMAIL_MESSAGE,
+  REQUIRED_DATE_MESSAGE,
 } from '../helpers/constants.js';
 
 export const bookingFormSchema = Yup.object().shape({
@@ -18,8 +19,7 @@ export const bookingFormSchema = Yup.object().shape({
     .matches(EMAIL_REGEX, EMAIL_ERROR_MESSAGE)
     .required(REQUIRED_EMAIL_MESSAGE),
 
-  // date: ?
+  date: Yup.string().trim().required(REQUIRED_DATE_MESSAGE),
 
-  comment: Yup.string().trim(),
-  //comment not required or ALL FIELDS required?
+  comment: Yup.string().trim().min(5, 'Comment is min 5 symbols'),
 });

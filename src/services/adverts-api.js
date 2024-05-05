@@ -8,10 +8,3 @@ export const apiGetAdverts = async () => {
   const { data } = await apiInstance.get('/adverts');
   return data;
 };
-
-export const apiGetAdvertById = async (id) => {
-  const { data } = await apiInstance.get(`/adverts/:${id}`);
-  return data;
-};
-
-//apiAddCarToFavorite на рівні стейту лише

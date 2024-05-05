@@ -12,13 +12,8 @@
   line-height: 1.25;
 }
 
-/* .avatar p {
-  display: block;
-  font-size: 45px;
-  color: var(--primary-white);
-} */
-
 .commentContainer {
+  width: 430px;
   margin-bottom: 24px;
 }
 
@@ -31,10 +26,10 @@
 
 .nameStarsWrapper {
   font-size: 18px;
-
   font-weight: 600;
   line-height: 1.33;
 }
+
 .nameText {
   margin-bottom: 4px;
 }
@@ -45,9 +40,7 @@
 
 .commentText {
   color: var(--primary-gray);
-
   font-size: 16px;
-
   font-weight: 400;
   line-height: 1.5;
 }

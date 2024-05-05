@@ -1,9 +1,9 @@
 .bookingFormContainer {
+  box-sizing: border-box;
   max-height: 534px;
   padding: 24px;
   border: var(--border-gray);
   width: 450px;
-
   border-radius: 10px;
 }
 
@@ -22,32 +22,20 @@
   margin-bottom: 24px;
 }
 
-.bookingForm {
-}
-
-/* :not(:last-child) */
 .inputWrapper {
-  /* margin-bottom: 14px; */
   padding-bottom: 24px;
   position: relative;
 }
 
-.inputWrapper:nth-last-child(2) {
-  /* margin-bottom: 24px; */
-  margin-bottom: 8px;
-}
-
 .input {
-  width: 100%;
+  box-sizing: border-box !important;
+  width: 400px;
   display: flex;
   padding: 18px;
-  /* flex-direction: column; */
   align-items: center;
-  /* gap: 10px; */
   border-radius: 10px;
   background-color: var(--secondary-white-smoke);
   outline: none;
-  /* border: 1px solid transperent; */
   border: none;
   color: var(--primary-dark);
   font-size: 16px;
@@ -61,5 +49,4 @@
 
 .errorInput {
   color: var(--secondary-red);
-  /* border: 1px solid var(--hover-red); */
 }

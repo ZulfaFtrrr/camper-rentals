@@ -2,9 +2,7 @@
   color: var(--secondary-red);
   font-size: 12px;
   line-height: 18px;
-  /* padding: 5px; */
   position: absolute;
-  /* top: 55px; */
   bottom: 2px;
   left: 2px;
 }

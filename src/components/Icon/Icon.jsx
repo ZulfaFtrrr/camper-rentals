@@ -1,6 +1,4 @@
 import IconsSprite from '../../assets/sprite.svg';
-///static/icons/
-import s from './Icon.module.css';
 
 const Icon = ({
   id,
@@ -10,7 +8,7 @@ const Icon = ({
   stroke = '#101828',
 }) => (
   <svg
-    className={s[className]}
+    className={className}
     width={size}
     height={size}
     fill={fill}

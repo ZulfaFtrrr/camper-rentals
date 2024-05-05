@@ -1,28 +1,17 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { apiGetAdverts, apiGetAdvertById } from '../../services/adverts-api.js';
+import { apiGetAdverts } from '../../services/adverts-api.js';
+import { toast } from 'react-toastify';
 
 export const fetchAdverts = createAsyncThunk(
   'contacts/fetchAdverts',
   async (_, thunkApi) => {
     try {
       const adverts = await apiGetAdverts();
+      // toast.success('Wellcome to the Camper Rentals!');
       return adverts;
     } catch (error) {
+      toast.error(error?.message);
       return thunkApi.rejectWithValue(error.message);
-      // toast !
-    }
-  }
-);
-
-export const fetchAdvertById = createAsyncThunk(
-  'contacts/fetchAdvertById',
-  async (id, thunkApi) => {
-    try {
-      const advert = await apiGetAdvertById(id);
-      return advert;
-    } catch (error) {
-      return thunkApi.rejectWithValue(error.message);
-      // toast !
     }
   }
 );

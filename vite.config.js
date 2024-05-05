@@ -17,6 +17,4 @@ export default defineConfig({
     },
   },
   base: '/camper-rentals',
-  //camper-rentals
-  // https://github.com/imlaamer/camper-rentals
 });

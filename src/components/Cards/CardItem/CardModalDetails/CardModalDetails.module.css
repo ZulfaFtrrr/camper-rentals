@@ -1,11 +1,11 @@
 .scrollContainer {
-  /* padding-bottom: 24px; */
   height: 608px;
   overflow: scroll;
 }
 
-.cardModalDetailBox {
-  /* padding-bottom: 44px; */
+.tabsFormWrapper {
+  display: flex;
+  gap: 22px;
 }
 
 .cardTitle {
@@ -18,14 +18,11 @@
 .iconsReviewsLocationBox {
   display: flex;
   flex-direction: row;
-  /* gap: 4px; */
-  /* justify-content: center; */
   align-items: center;
   margin-bottom: 16px;
 }
 
 .reviewsText {
-  /* text-decoration: underline; */
   border-bottom: 1px solid currentColor;
   font-size: 16px;
   font-weight: 400;
@@ -79,16 +76,12 @@
   display: flex;
   flex-direction: row;
   gap: 40px;
-
   color: var(--primary-dark);
   font-size: 20px;
   font-weight: 600;
   line-height: 1.2;
-
   border-bottom: var(--border-gray);
-
   margin-bottom: 44px;
-  /* ......? */
 }
 
 .tabItem {
@@ -103,7 +96,6 @@
   bottom: -2px;
   left: 0;
   background-color: var(--secondary-red);
-  /* border-radius: 2px; */
   width: 100%;
   height: 4px;
 }

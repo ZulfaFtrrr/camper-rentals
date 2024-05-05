@@ -15,7 +15,7 @@ const Comment = ({ review }) => {
         <div className={s.nameStarsWrapper}>
           <p className={s.nameText}>{name}</p>
           <div className={s.starsWrapper}>
-            {[...Array(5)].map((star, index) => {
+            {[...Array(5)].map((_, index) => {
               counter++;
 
               return (

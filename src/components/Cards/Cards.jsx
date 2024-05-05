@@ -1,15 +1,14 @@
 import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { useLocation } from 'react-use';
 import CardItem from './CardItem/CardItem';
-import s from './Cards.module.css';
 import {
-  getAdverts,
   selectAllAdverts,
   selectFavorites,
 } from '../../redux/adverts/advertsSelectors';
-import { useEffect, useState } from 'react';
 import { fetchAdverts } from '../../redux/adverts/advertsOperations';
-import Icon from '../Icon/Icon';
-import { useLocation } from 'react-use';
+
+import s from './Cards.module.css';
 
 const Cards = ({ visibleAdverts }) => {
   const location = useLocation();
@@ -22,10 +21,7 @@ const Cards = ({ visibleAdverts }) => {
     dispatch(fetchAdverts())
       .unwrap()
       .then()
-      .catch(
-        () => console.eror('Error')
-        // toast.error('Something went wrong. Please try again later!')
-      );
+      .catch((error) => console.error(error));
   }, [dispatch]);
 
   const adverts = useSelector(selectAllAdverts);
@@ -47,70 +43,8 @@ const Cards = ({ visibleAdverts }) => {
               isFavoritesPage={isFavoritesPage}
             />
           ))}
-
-      <Icon id={'bed'} />
-      <Icon id={'water'} />
-      <Icon id={'toilet'} fill="#101828" stroke="none" />
-
-      <Icon id={'schedule'} />
-      <Icon id={'route'} fill="#101828" stroke="none" />
-      <Icon id={'radio'} />
-      <Icon id={'plate'} />
-      <Icon id={'people'} fill="#101828" stroke="none" />
-      <Icon id={'microwave'} />
-      <Icon id={'map-pin'} />
-      <Icon id={'heart'} />
-
-      <Icon id={'gas'} fill="#101828" stroke="none" />
-      <Icon id={'fuel'} fill="#101828" stroke="none" />
-      <Icon id={'freezer'} />
-
-      <Icon id={'conditioner'} />
-      <Icon id={'cd'} />
-      <Icon id={'star'} />
-      <Icon id={'star'} fill="none" stroke="none" />
-      <Icon id={'cross'} />
-      <Icon id={'gearbox'} size="32" />
-      <Icon id={'food'} size="32" stroke="#101828" />
-      {/* <Icon id={'food-2'} size="32" stroke="#101828" /> */}
-
-      <Icon id={'shower'} size="32" />
-      <Icon id={'ac'} fill="#101828" stroke="none" size="32" />
-      <Icon id={'alcove'} size="40" fill="#101828" stroke="none" />
-      <Icon id={'fully'} size="40" fill="#101828" stroke="none" />
-      <Icon id={'van'} size="40" fill="#101828" stroke="none" />
     </ul>
   );
 };
 
 export default Cards;
-
-//map
-
-// <Icon id={'bed'} />
-//             <Icon id={'water'} />
-//             <Icon id={'toilet'} fill="#101828" stroke="none" />
-
-//             <Icon id={'schedule'} />
-//             <Icon id={'route'} fill="#101828" stroke="none" />
-//             <Icon id={'radio'} />
-//             <Icon id={'plate'} />
-//             <Icon id={'people'} fill="#101828" stroke="none" />
-//             <Icon id={'microwave'} />
-//             <Icon id={'map-pin'} />
-//             <Icon id={'heart'} />
-
-//             <Icon id={'gas'} fill="#101828" stroke="none" />
-//             <Icon id={'fuel'} fill="#101828" stroke="none" />
-//             <Icon id={'freezer'} />
-
-//             <Icon id={'conditioner'} />
-//             <Icon id={'cd'} />
-//             <Icon id={'star'} />
-//             <Icon id={'cross'} />
-//             <Icon id={'gearbox'} size="32" />
-//             <Icon id={'food'} size="32" stroke="#101828" />
-//             {/* <Icon id={'food-2'} size="32" stroke="#101828" /> */}
-
-//             <Icon id={'shower'} size="32" />
-//             <Icon id={'ac'} fill="#101828" stroke="none" size="32" />

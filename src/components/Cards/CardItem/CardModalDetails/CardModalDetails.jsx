@@ -1,4 +1,9 @@
+import { useState } from 'react';
 import Icon from '../../../Icon/Icon';
+import Features from '../../Features/Features';
+import Reviews from '../../Reviews/Reviews';
+import BookingForm from '../../../forms/BookingForm/BookingForm';
+
 import {
   formatPrice,
   countReviews,
@@ -6,9 +11,6 @@ import {
 } from '../../../../helpers/format-card-info';
 
 import s from './CardModalDetails.module.css';
-import { useState } from 'react';
-import Features from '../../Features/Features';
-import Reviews from '../../Reviews/Reviews';
 
 const CardModalDetails = ({ advert, isAllFeatures }) => {
   const [toggledTab, setToggleTab] = useState(1);
@@ -36,7 +38,9 @@ const CardModalDetails = ({ advert, isAllFeatures }) => {
           <Icon id={'map-pin'} size="16" />
           <p className={s.locationText}>{formatedLocation}</p>
         </div>
+
         <p className={s.priceText}>{formatedPrice}</p>
+
         <ul className={s.galleryWrapper}>
           {gallery?.map((image, index) => (
             <li className={s.imagesBox} key={index}>
@@ -44,7 +48,9 @@ const CardModalDetails = ({ advert, isAllFeatures }) => {
             </li>
           ))}
         </ul>
+
         <p className={s.detailsText}>{description}</p>
+
         <ul className={s.tabsList}>
           <li
             className={
@@ -63,10 +69,15 @@ const CardModalDetails = ({ advert, isAllFeatures }) => {
             Reviews
           </li>
         </ul>
-        {toggledTab === 1 && (
-          <Features advert={advert} isAllFeatures={isAllFeatures} />
-        )}
-        {toggledTab === 2 && <Reviews advert={advert} />}
+
+        <div className={s.tabsFormWrapper}>
+          {toggledTab === 1 && (
+            <Features advert={advert} isAllFeatures={isAllFeatures} />
+          )}
+          {toggledTab === 2 && <Reviews advert={advert} />}
+
+          <BookingForm />
+        </div>
       </div>
     </div>
   );

@@ -29,8 +29,3 @@ export const formatForm = (form) => {
   const second = arr[1].charAt(0).toLowerCase() + arr[1].slice(1);
   return first + ' ' + second;
 };
-
-// .toLocaleString('en-US', {
-//   style: 'currency',
-//   currency: 'EUR',
-// });

@@ -1,9 +1,10 @@
 import Icon from '../../Icon/Icon';
-import s from './Services.module.css';
 import {
   formatEngine,
   formatTransmission,
 } from '../../../helpers/format-card-info';
+
+import s from './Services.module.css';
 
 const Services = ({ advert, className, isAllFeatures }) => {
   const commonfiltersWrapper = `${s.filtersWrapper} ${s[className]}`;
@@ -30,7 +31,6 @@ const Services = ({ advert, className, isAllFeatures }) => {
   const formatedEngine = formatEngine(engine);
   const formatedTransmission = formatTransmission(transmission);
 
-  // console.log('render');
   return (
     <ul className={commonfiltersWrapper}>
       {adults && (

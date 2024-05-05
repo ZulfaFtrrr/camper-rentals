@@ -7,13 +7,10 @@
   width: 100%;
   display: flex;
   padding: 18px;
-  /* flex-direction: column; */
   align-items: center;
-  /* gap: 10px; */
   border-radius: 10px;
   background-color: var(--secondary-white-smoke);
   outline: none;
-  /* border: 1px solid transperent; */
   border: none;
   color: var(--primary-dark);
   font-size: 16px;
@@ -29,4 +26,3 @@
   cursor: pointer;
 }
 
-/* class="react-datepicker-wrapper" */

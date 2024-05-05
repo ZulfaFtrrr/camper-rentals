@@ -1,5 +1,4 @@
 import s from './Button.module.css';
-import Spinner from '../../components/Spinner/Spinner';
 
 const Button = ({
   type = 'button',
@@ -21,7 +20,6 @@ const Button = ({
       disabled={loading}
       {...rest}
     >
-      {loading && <Spinner color="#fff" size="10px" />}
       {children}
       {!loading && title}
     </button>

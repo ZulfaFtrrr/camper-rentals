@@ -1,32 +1,14 @@
-import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
-import { toast } from 'react-toastify';
-import DatePicker from 'react-datepicker';
-
 import 'react-datepicker/dist/react-datepicker.css';
-
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
 import Button from '../../Button/Button';
-
+import { DatePickerField } from './DatePickerField/DatePickerField';
 import { bookingFormSchema } from '../../../schemas/bookingFormSchema';
 
 import s from './BookingForm.module.css';
-import { useState } from 'react';
-import Icon from '../../Icon/Icon';
-import CustomInput from './CustomInput/CustomInput';
+import { toast } from 'react-toastify';
 
-//{onClose}
 const BookingForm = () => {
-  //   const dispatch = useDispatch();
-
-  const [selectedDate, setSelectedDate] = useState(null);
-
-  const [toggleCalendar, setToggleCalendar] = useState(false);
-
-  const handleToggleCalendar = () => {
-    setToggleCalendar(!toggleCalendar);
-  };
-
   const {
     values,
     errors,
@@ -36,23 +18,21 @@ const BookingForm = () => {
     handleSubmit,
     setSubmitting,
     resetForm,
+    setFieldValue,
   } = useFormik({
     initialValues: {
       username: '',
       email: '',
-      date: selectedDate,
+      date: '',
       comment: '',
     },
     validationSchema: bookingFormSchema,
     onSubmit: () => {
-      // dispatch(updateUserData(values))
-      //   .unwrap()
-      //   .then(() => {
-      //     setSubmitting(false);
-      //     resetForm();
-      //     onClose();
-      //   })
-      //   .catch((error) => console.error(error));
+      // console.log(values);
+      toast.success('Success booking');
+      resetForm();
+      setSubmitting(false);
+      window.location.reload(); //reload page on success
     },
   });
 
@@ -98,48 +78,14 @@ const BookingForm = () => {
         </div>
 
         <div className={s.inputWrapper}>
-          {/* <input
-            type="text"
-            name="date"
-            placeholder="Booking date"
-            onBlur={handleBlur}
-            onChange={handleChange}
-            className={`${s.input} ${
-              touched.date && errors.date && s.errorInput
-            }`}
-          /> */}
-
-          {/* <div className={s.datePicker}></div> */}
-          <label>
-            <DatePicker
-              customInput={
-                <CustomInput
-                // onClick={handleToggleCalendar}
-                // value={values.date}
-                // handleBlur={handleBlur}
-                // handleChange={handleChange}
-                // touched={touched}
-                // errors={errors}
-                />
-              }
-              // value={values.date}
-              // selected={values.date}
-              // onChange={handleChange}
-              selected={selectedDate}
-              onChange={(date) => setSelectedDate(date)}
-              dateFormat="dd/MM/yyyy"
-              minDate={new Date()}
-              // onClick={handleToggleCalendar}
-              calendarStartDay={1}
-              className={s.bookingCalendar}
-              // closeOnScroll={true}
-            />
-          </label>
-          {/* <ErrorMessage
-            errorMessage={errors.date}
-            touched={touched.date}
-          /> */}
+          <DatePickerField
+            value={values.date}
+            setFieldValue={setFieldValue}
+            className={`${s.input} ${touched.comment && errors.comment}`}
+          />
+          <ErrorMessage errorMessage={errors.date} touched={touched.date} />
         </div>
+
         <div className={s.inputWrapper}>
           <input
             type="text"
@@ -157,6 +103,7 @@ const BookingForm = () => {
             touched={touched.comment}
           />
         </div>
+
         <Button type="submit" className="booking-submit-btn">
           Send
         </Button>

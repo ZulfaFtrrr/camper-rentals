@@ -1,12 +1,10 @@
-import { formatForm } from '../../../helpers/format-card-info';
-import BookingForm from '../../forms/BookingForm/BookingForm';
 import Services from '../Services/Services';
+import { formatForm } from '../../../helpers/format-card-info';
 import s from './Features.module.css';
 
 const Features = ({ advert, isAllFeatures }) => {
   const { form, length, width, height, tank, consumption } = advert;
   const formatedForm = formatForm(form);
-  // console.log(formatedForm);
   return (
     <div className={s.featuresWrapper}>
       <div>
@@ -15,6 +13,7 @@ const Features = ({ advert, isAllFeatures }) => {
           className="modal-services"
           isAllFeatures={isAllFeatures}
         />
+
         <h2 className={s.vehicleDetailsTitle}>Vehicle details</h2>
         <ul className={s.vehicleDetailsList}>
           <li className={s.vehicleDetailsItem}>
@@ -43,7 +42,6 @@ const Features = ({ advert, isAllFeatures }) => {
           </li>
         </ul>
       </div>
-      <BookingForm />
     </div>
   );
 };
