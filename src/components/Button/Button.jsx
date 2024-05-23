@@ -4,7 +4,7 @@ const Button = ({
   type = 'button',
   title,
   children,
-  className,
+  className = 'load-more-cards-btn',
   onClick,
   loading,
 

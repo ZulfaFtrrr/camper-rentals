@@ -4,9 +4,9 @@ import { toast } from 'react-toastify';
 
 export const fetchAdverts = createAsyncThunk(
   'contacts/fetchAdverts',
-  async (_, thunkApi) => {
+  async (page, thunkApi) => {
     try {
-      const adverts = await apiGetAdverts();
+      const adverts = await apiGetAdverts(page); //
       return adverts;
     } catch (error) {
       toast.error(error?.message);

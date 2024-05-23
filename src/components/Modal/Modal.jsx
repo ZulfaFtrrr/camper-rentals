@@ -8,7 +8,7 @@ import s from './Modal.module.css';
 const modalRootRef = document.querySelector('#modal-root');
 
 const Modal = ({ onClose, children, className }) => {
-  const containerClassNames = `${s.container} ${s[className]}`; //
+  const containerClassNames = `${s.container} ${s[className]}`;
 
   useLockBodyScroll(true);
 

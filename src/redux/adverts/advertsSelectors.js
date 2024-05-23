@@ -21,3 +21,13 @@ export const selectFavorites = createSelector(
   selectAdverts,
   (adverts) => adverts.favorites
 );
+
+export const selectPage = createSelector(
+  selectAdverts,
+  (adverts) => adverts.page
+);
+
+export const selectIsLoadMore = createSelector(
+  selectAdverts,
+  (adverts) => adverts.isLoadMore
+);

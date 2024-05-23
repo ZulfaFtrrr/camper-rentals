@@ -1,13 +1,27 @@
 import { NavLink } from 'react-router-dom';
 import Container from '../../components/Container/Container';
 import s from './HomePage.module.css';
+import { useEffect } from 'react';
+import { resetAdverts } from '../../redux/adverts/advertsSlice';
+import { useDispatch } from 'react-redux';
+import { useLocation } from 'react-use';
 
 const HomePage = () => {
+  const dispatch = useDispatch();
+
+  // useEffect(() => {
+  //   dispatch(resetAdverts());
+  // }, [dispatch]);
+
+  const location = useLocation();
+
+  useEffect(() => {
+    dispatch(resetAdverts());
+  }, [dispatch, location.pathname]);
 
   return (
     <section className={s.hero}>
       <Container className="home-page-container">
-
         <h1 className={s.heroTitle}>Rent a Campervan</h1>
         <p className={s.heroSubTitle}>
           Explore Ukraine in one of our custom-built campervans
@@ -31,7 +45,6 @@ const HomePage = () => {
         >
           Go to catalog
         </NavLink>
-       
       </Container>
     </section>
   );

@@ -13,10 +13,13 @@
   --secondary-white-smoke: #f7f7f7;
   --secondary-light-grey: #f2f4f7;
   --secondary-yellow: #ffc531;
+  --logo-yellow: #b58b64;
 
   --hover-red: #d84343;
 
   --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   --backdrop: rgba(17, 18, 19, 0.4);
   --border-gray: 1px solid rgba(16, 24, 40, 0.2);
+  --text-light-grey: rgba(16, 24, 40, 0.6);
+  --filters-border-bottom: rgba(16, 24, 40, 0.1);
 }

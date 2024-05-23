@@ -1,5 +1,5 @@
 .cardsList {
-  width: 886px;
-  margin: 0 auto;
+  max-width: 886px;
+  /* margin: 0 auto; */
   margin-bottom: 50px;
 }

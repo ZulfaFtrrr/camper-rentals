@@ -44,3 +44,12 @@
 .booking-submit-btn {
   margin: 0;
 }
+
+.filterSearchBtn {
+  margin: 0;
+  background-color: var(--secondary-red);
+}
+
+.filterSearchBtn:is(:hover, :focus) {
+  background-color: var(--hover-red);
+}

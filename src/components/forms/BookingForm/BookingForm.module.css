@@ -1,38 +1,41 @@
 .bookingFormContainer {
-  box-sizing: border-box;
-  max-height: 534px;
+  position: sticky;
+  top: 0;
+  width: 450px;
+  /* max-height: 534px; */
+  max-height: 606px;
+
   padding: 24px;
   border: var(--border-gray);
-  width: 450px;
   border-radius: 10px;
 }
 
 .bookingFormTitle {
+  margin-bottom: 8px;
   font-size: 20px;
   font-weight: 600;
   line-height: 1.2;
-  margin-bottom: 8px;
 }
 
 .bookingFormText {
-  color: var(--primary-gray);
+  margin-bottom: 24px;
   font-size: 16px;
   font-weight: 400;
   line-height: 1.5;
-  margin-bottom: 24px;
+  color: var(--primary-gray);
 }
 
 .inputWrapper {
-  padding-bottom: 24px;
   position: relative;
+  padding-bottom: 24px;
 }
 
 .input {
-  box-sizing: border-box !important;
-  width: 400px;
   display: flex;
-  padding: 18px;
   align-items: center;
+  width: 100%;
+  /* width: 400px; */
+  padding: 18px;
   border-radius: 10px;
   background-color: var(--secondary-white-smoke);
   outline: none;

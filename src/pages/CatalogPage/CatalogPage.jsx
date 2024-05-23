@@ -1,34 +1,73 @@
-import { useSelector } from 'react-redux';
-import { useState } from 'react';
-
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect, useRef, useState } from 'react';
 import Button from '../../components/Button/Button';
 import Cards from '../../components/Cards/Cards';
 import Container from '../../components/Container/Container';
-import { selectAllAdverts } from '../../redux/adverts/advertsSelectors';
-import { POSTS_PER_PAGE } from '../../helpers/constants';
+import {
+  selectAllAdverts,
+  selectIsLoadMore,
+  selectIsLoading,
+  selectPage,
+} from '../../redux/adverts/advertsSelectors';
+import {
+  increasePage,
+  resetAdverts,
+  resetFavsPage,
+} from '../../redux/adverts/advertsSlice';
+import { fetchAdverts } from '../../redux/adverts/advertsOperations';
+import { limit } from '../../helpers/constants';
 
 import s from './CatalogPage.module.css';
+import { scrollDownOnLoadMore } from '../../helpers/scrollDownOnLoadMore';
+import { useLocation } from 'react-use';
+import Filter from '../../components/Filter/Filter';
 
 const CatalogPage = () => {
-  const [page, setPage] = useState(1);
+  const dispatch = useDispatch();
+
+  const page = useSelector(selectPage);
   const adverts = useSelector(selectAllAdverts);
-  const visibleAdverts = POSTS_PER_PAGE * page;
-  const isShowLoadMoreBtn = visibleAdverts < adverts.length;
+
+  const isLoadMore = useSelector(selectIsLoadMore);
+  const isLoading = useSelector(selectIsLoading);
+
+  const advertsListRef = useRef(null);
+
+  useEffect(() => {
+    dispatch(resetAdverts());
+  }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(fetchAdverts(page))
+      .unwrap()
+      .then()
+      .catch((error) => console.error(error));
+  }, [dispatch, page]);
 
   const handleLoadMore = () => {
-    setPage(page + 1);
+    dispatch(increasePage());
+    const setScrollDown = (ref) => {
+      console.log('scroll');
+      setTimeout(() => {
+        if (!ref.current) return;
+        scrollDownOnLoadMore(ref);
+      }, 500);
+    };
+    setScrollDown(advertsListRef);
   };
 
   return (
     <section className={s.catalog}>
       <Container className="catalog-page-container">
-        <Cards visibleAdverts={visibleAdverts} />
-
-        {isShowLoadMoreBtn && (
-          <Button onClick={handleLoadMore} className="load-more-cards-btn">
-            Load more
-          </Button>
-        )}
+        <div className={s.filterCardsWrapper}>
+          <Filter />
+          <div>
+            <Cards adverts={adverts} advertsListRef={advertsListRef} />
+            {isLoadMore && !isLoading && (
+              <Button onClick={handleLoadMore}>Load more</Button>
+            )}
+          </div>
+        </div>
       </Container>
     </section>
   );

@@ -2,7 +2,7 @@
   width: 100%;
   max-width: 1312px;
   padding: 0 15px;
-  box-sizing: border-box;
+
   margin: 0px auto;
 }
 
@@ -10,11 +10,14 @@
   position: absolute;
   top: 50%;
   left: 50%;
+  padding-left: 50px;
   transform: translate(-50%, -50%);
   max-width: 1312px;
   color: var(--secondary-white-smoke);
   font-weight: 500;
   line-height: 1.333;
+  padding-left: 30px;
+  padding-right: 30px;
 }
 
 .header-container,

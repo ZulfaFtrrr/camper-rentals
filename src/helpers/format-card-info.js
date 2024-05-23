@@ -1,4 +1,4 @@
-export const formatPrice = (price) => '€' + price + ',00';
+export const formatPrice = (price) => '€' + price.toFixed(2);
 
 export const countReviews = (reviews) => {
   return reviews?.reduce((total) => {

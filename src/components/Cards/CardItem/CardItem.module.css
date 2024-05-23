@@ -1,6 +1,6 @@
 .cardsItem {
   display: flex;
-  gap: 24px;
+  justify-content: space-between;
   width: 886px;
   padding: 24px;
   border-radius: 20px;
@@ -10,8 +10,8 @@
 }
 
 .imageContainer {
-  width: 290px;
-  height: 310px;
+  max-width: 290px;
+  max-height: 310px;
   overflow: hidden;
   background-color: var(--secondary-light-grey);
   border-radius: 10px;
@@ -24,7 +24,7 @@
 }
 
 .cardInfo {
-  width: 526px;
+  max-width: 526px;
 }
 
 .cardTitle {
@@ -104,6 +104,7 @@
 }
 
 .detailsText {
+  /* min-width: 240px; */
   max-width: 526px;
   white-space: nowrap;
   overflow: hidden;

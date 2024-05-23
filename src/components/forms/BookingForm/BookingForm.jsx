@@ -1,4 +1,5 @@
 import { useFormik } from 'formik';
+import { toast } from 'react-toastify';
 import 'react-datepicker/dist/react-datepicker.css';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
 import Button from '../../Button/Button';
@@ -6,7 +7,6 @@ import { DatePickerField } from './DatePickerField/DatePickerField';
 import { bookingFormSchema } from '../../../schemas/bookingFormSchema';
 
 import s from './BookingForm.module.css';
-import { toast } from 'react-toastify';
 
 const BookingForm = () => {
   const {

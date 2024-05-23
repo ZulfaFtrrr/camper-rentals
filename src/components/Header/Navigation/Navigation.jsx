@@ -1,6 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import s from './Navigation.module.css';
 import Icon from '../../Icon/Icon';
+import logo from '../../../assets/static/logo-sun.png';
 
 const Navigation = () => {
   return (
@@ -35,8 +36,14 @@ const Navigation = () => {
       </div>
 
       <NavLink className={s.logoText} to="/">
-        <Icon id={'alcove'} size="38" fill="#ffc531" stroke="none" />
-        <p> Camper Rentals</p>
+        <img src={logo} alt="logo" width="50" />
+
+        {/* <Icon id={'alcove'} size="38" fill="#ffc531" stroke="none" /> */}
+        <p>
+          <span> {'Camper'.toUpperCase()}</span>
+          <br />
+          <span> {'rentals'.toUpperCase()}</span>
+        </p>
       </NavLink>
     </div>
   );

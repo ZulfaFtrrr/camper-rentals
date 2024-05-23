@@ -1,3 +1,32 @@
+.filterCardsWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+}
+
 .catalog {
   padding: 100px 0;
+}
+
+@media screen and (min-width: 768px) {
+  .filterCardsWrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 0;
+    justify-content: space-between;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .catalog {
+    /* padding: 100px 0; */
+  }
+
+  .filterCardsWrapper {
+    /* display: flex; */
+    /* gap: 64px; */
+    /* gap: 24px; */
+
+    /* justify-content: space-between; */
+  }
 }

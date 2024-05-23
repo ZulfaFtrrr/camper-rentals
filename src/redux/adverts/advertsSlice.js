@@ -1,11 +1,14 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 import { fetchAdverts } from './advertsOperations.js';
+import { limit } from '../../helpers/constants.js';
 
 const initialState = {
   adverts: [],
+  favorites: [],
+  page: 1,
+  isLoadMore: true,
   isLoading: false,
   error: null,
-  favorites: [],
 };
 
 export const advertsSlice = createSlice({
@@ -22,6 +25,29 @@ export const advertsSlice = createSlice({
       );
       state.favorites.splice(index, 1);
     },
+    //----------------page
+    increasePage: (state) => {
+      state.page = state.page + 1;
+    },
+    // ?????
+    hideLoadMoreFavs: (state) => {
+      state.isLoadMore = false;
+    },
+    resetAdverts: (state) => {
+      state.page = 1;
+      state.adverts = [];
+      state.isLoadMore = true;
+    },
+    resetFavsPage: (state) => {
+      state.page = 1;
+      state.isLoadMore = true;
+    },
+    resetAdvertsFavs: (state) => {
+      state.page = 1;
+      // state.adverts = [];
+      if (state.favorites.length <= limit) state.isLoadMore = false;
+      else state.isLoadMore = true;
+    },
   },
 
   extraReducers: (builder) =>
@@ -29,7 +55,13 @@ export const advertsSlice = createSlice({
       //---------------fetchAdverts
       .addCase(fetchAdverts.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.adverts = action.payload;
+
+        // console.log(state.adverts, '- state', action.payload, '- payload');
+
+        state.adverts = [...state.adverts, ...action.payload]; //
+        if (action.payload.length < limit) state.isLoadMore = false;
+
+        console.log(state.adverts);
       })
 
       .addMatcher(isAnyOf(fetchAdverts.pending), (state) => {
@@ -42,4 +74,12 @@ export const advertsSlice = createSlice({
       }),
 });
 
-export const { addToFavorites, removeFromFavorites } = advertsSlice.actions;
+export const {
+  addToFavorites,
+  removeFromFavorites,
+  increasePage,
+  resetAdverts,
+  hideLoadMoreFavs,
+  resetFavsPage,
+  resetAdvertsFavs,
+} = advertsSlice.actions;

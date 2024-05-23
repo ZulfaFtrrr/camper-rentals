@@ -16,7 +16,7 @@ import storage from 'redux-persist/lib/storage';
 const advertsConfig = {
   key: 'adverts',
   storage,
-  whitelist: ['adverts', 'favorites'],
+  whitelist: ['adverts', 'favorites', 'page', 'isLoadMore'],
 };
 
 export const store = configureStore({

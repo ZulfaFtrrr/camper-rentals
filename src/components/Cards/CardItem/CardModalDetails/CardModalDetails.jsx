@@ -26,8 +26,10 @@ const CardModalDetails = ({ advert, isAllFeatures }) => {
   const formatedLocation = formatLocation(location);
 
   return (
-    <div className={s.cardModalDetailBox}>
+    <div className={s.modalContentWrapper}>
+      {/* <div className={s.stickyHeader}> */}
       <h2 className={s.cardTitle}>{name}</h2>
+      {/* </div> */}
 
       <div className={s.scrollContainer}>
         <div className={s.iconsReviewsLocationBox}>
@@ -84,3 +86,5 @@ const CardModalDetails = ({ advert, isAllFeatures }) => {
 };
 
 export default CardModalDetails;
+
+// <div className={s.cardModalDetailBox}>
