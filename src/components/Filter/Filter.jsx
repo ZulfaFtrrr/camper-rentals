@@ -4,7 +4,7 @@ import Button from '../Button/Button';
 import s from './Filter.module.css';
 
 const Filter = () => {
-//   const handleChange = (e) => {};
+  //   const handleChange = (e) => {};
   return (
     <div className={s.filterWrapper}>
       <form action="">
