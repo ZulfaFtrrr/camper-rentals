@@ -14,10 +14,11 @@
 }
 
 .locationInput {
+  /* position: relative; */
   width: 100%;
   padding: 18px;
   padding-left: 44px;
-  margin-bottom: 32px;
+  /* margin-bottom: 32px; */
   /* color: var(--primary-dark); */
   /* font-family: Inter; */
   /* font-weight: 400; */
@@ -31,7 +32,9 @@
 }
 
 .locationInput::placeholder {
-  color: var(--primary-dark);
+  /* color: var(--primary-dark); */
+  /* color: var(--primary-gray); */
+  color: var(--placeholder);
 }
 
 .inputIconBox {
@@ -161,4 +164,22 @@
 
 .customCheckbox:focus {
   border-color: var(--border-gray);
+}
+
+.errorInput {
+  color: var(--secondary-red);
+}
+
+.errorMessageBox {
+  position: relative;
+  padding-bottom: 32px;
+}
+
+.btnsBox {
+  display: flex;
+  gap: 10px;
+  /* flex-wrap: wrap; */
+}
+.btnsBox > button {
+  width: 45%;
 }

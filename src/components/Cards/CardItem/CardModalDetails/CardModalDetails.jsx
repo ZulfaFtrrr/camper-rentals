@@ -23,7 +23,7 @@ const CardModalDetails = ({ advert, isAllFeatures }) => {
     advert;
   const formatedPrice = formatPrice(price);
   const countedReviews = countReviews(reviews);
-  const formatedLocation = formatLocation(location);
+  // const formatedLocation = formatLocation(location);
 
   return (
     <div className={s.modalContentWrapper}>
@@ -38,7 +38,7 @@ const CardModalDetails = ({ advert, isAllFeatures }) => {
             {rating}({countedReviews} Reviews)
           </p>
           <Icon id={'map-pin'} size="16" />
-          <p className={s.locationText}>{formatedLocation}</p>
+          <p className={s.locationText}>{location}</p>
         </div>
 
         <p className={s.priceText}>{formatedPrice}</p>

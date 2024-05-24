@@ -22,4 +22,5 @@
   --border-gray: 1px solid rgba(16, 24, 40, 0.2);
   --text-light-grey: rgba(16, 24, 40, 0.6);
   --filters-border-bottom: rgba(16, 24, 40, 0.1);
+  --placeholder: rgba(16, 24, 40, 0.6);
 }

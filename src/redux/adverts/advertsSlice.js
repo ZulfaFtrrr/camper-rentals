@@ -1,5 +1,9 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
-import { fetchAdverts } from './advertsOperations.js';
+import {
+  fetchAdverts,
+  fetchFilteredAdverts,
+  resetFilteredAdverts,
+} from './advertsOperations.js';
 import { limit } from '../../helpers/constants.js';
 
 const initialState = {
@@ -33,6 +37,9 @@ export const advertsSlice = createSlice({
     hideLoadMoreFavs: (state) => {
       state.isLoadMore = false;
     },
+    hideLoadMore: (state) => {
+      state.isLoadMore = false;
+    },
     resetAdverts: (state) => {
       state.page = 1;
       state.adverts = [];
@@ -48,6 +55,9 @@ export const advertsSlice = createSlice({
       if (state.favorites.length <= limit) state.isLoadMore = false;
       else state.isLoadMore = true;
     },
+    // resetFiltered: (state) => {
+    //   state.page;
+    // },
   },
 
   extraReducers: (builder) =>
@@ -61,17 +71,48 @@ export const advertsSlice = createSlice({
         state.adverts = [...state.adverts, ...action.payload]; //
         if (action.payload.length < limit) state.isLoadMore = false;
 
-        console.log(state.adverts);
+        // console.log(state.adverts);
       })
 
-      .addMatcher(isAnyOf(fetchAdverts.pending), (state) => {
-        state.isLoading = true;
-        state.error = null;
-      })
-      .addMatcher(isAnyOf(fetchAdverts.rejected), (state, action) => {
+      .addCase(fetchFilteredAdverts.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.error = action.payload;
-      }),
+        console.log(action.payload, 'PAYLOAD');
+        state.adverts = action.payload;
+        if (action.payload.length < limit) state.isLoadMore = false;
+        else state.isLoadMore = true;
+        //якщо пошук скинути на пусте поле тоді як лоад мор встановлювати? - to make independent action for toggling isLoadMore -
+      })
+
+      .addCase(resetFilteredAdverts.fulfilled, (state, action) => {
+        state.page = 1;
+        state.isLoading = false;
+        state.adverts = action.payload; //
+        state.isLoadMore = true;
+        // if (action.payload.length < limit) state.isLoadMore = false;
+      })
+
+      .addMatcher(
+        isAnyOf(
+          fetchAdverts.pending,
+          fetchFilteredAdverts.pending,
+          resetFilteredAdverts.pending
+        ),
+        (state) => {
+          state.isLoading = true;
+          state.error = null;
+        }
+      )
+      .addMatcher(
+        isAnyOf(
+          fetchAdverts.rejected,
+          fetchFilteredAdverts.rejected,
+          resetFilteredAdverts.rejected
+        ),
+        (state, action) => {
+          state.isLoading = false;
+          state.error = action.payload;
+        }
+      ),
 });
 
 export const {
@@ -82,4 +123,5 @@ export const {
   hideLoadMoreFavs,
   resetFavsPage,
   resetAdvertsFavs,
+  hideLoadMore,
 } = advertsSlice.actions;

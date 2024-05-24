@@ -1,23 +1,133 @@
 import { useState } from 'react';
+import { useFormik } from 'formik';
+import { toast } from 'react-toastify';
+
+import ErrorMessage from '../forms/ErrorMessage/ErrorMessage';
 import Icon from '../Icon/Icon';
 import Button from '../Button/Button';
-import s from './Filter.module.css';
 
-const Filter = () => {
+import { filterFormSchema } from '../../schemas/filterFormSchema';
+
+import s from './Filter.module.css';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  fetchAdverts,
+  fetchFilteredAdverts,
+  resetFilteredAdverts,
+} from '../../redux/adverts/advertsOperations';
+import { limit } from '../../helpers/constants';
+import { hideLoadMore } from '../../redux/adverts/advertsSlice';
+import { selectIsLoading } from '../../redux/adverts/advertsSelectors';
+import { useLocation } from 'react-use';
+
+const Filter = ({ page }) => {
+  const dispatch = useDispatch();
+
+  const [resetDisabled, setResetDisabled] = useState(true);
+  const isLoading = useSelector(selectIsLoading);
+
+  const location = useLocation();
+  const isFavoritesPage = location.pathname === '/camper-rentals/favorites';
+
+  //діспатчити лище якщо змінився стейт ? але юз ефект не доступний
+
+  //   const [filterValues, setFilterValues] = useState({});
+
   //   const handleChange = (e) => {};
+  const {
+    values,
+    errors,
+    touched,
+    isSubmitting,
+    handleChange,
+    handleBlur,
+    handleSubmit,
+    setSubmitting,
+    resetForm,
+    setFieldValue,
+  } = useFormik({
+    initialValues: {
+      location: '', //зробити стейт Киів ?
+      equipment: [], //відповідає бд окрім transmission
+      form: '',
+      //   details:
+
+      //   transmission: 'automatic',
+
+      //   airConditioner: '', //??? якщо задати 0  то знайде ж саме з 0 +  NUMBEr not STRING ?? infinity?)
+      //   kitchen: '',
+      //   TV: '',
+      //   shower: '',
+
+      //   form: '',
+
+      //"panelTruck", "alcove", "fullyIntegrated" - value
+    },
+    validationSchema: filterFormSchema,
+    onSubmit: () => {
+      if (isFavoritesPage) {
+        toast.success('Favs filtering in process');
+
+        return setSubmitting(false);
+      } //temporary
+      //   resetForm();
+      //   setSubmitting(false);
+      console.log(values);
+
+      const filters = { ...values, page };
+      // setFilterValues(values)
+
+      // if (filterValues === prevState)
+      dispatch(fetchFilteredAdverts(filters))
+        .unwrap()
+        .then((adverts) => {
+          setSubmitting(false);
+          toast.success('Success filtering');
+          if (adverts.length < limit) {
+            dispatch(hideLoadMore());
+          }
+          setResetDisabled(false);
+        })
+        .catch(() => setSubmitting(false));
+    },
+  });
+
+  const handleReset = () => {
+    dispatch(resetFilteredAdverts(1))
+      .unwrap()
+      .then(() => {
+        toast.success('Success reset');
+        setResetDisabled(true);
+        resetForm();
+      })
+      .catch((error) => console.error(error));
+  };
+
   return (
     <div className={s.filterWrapper}>
-      <form action="">
+      <form onSubmit={handleSubmit}>
         <label className={s.locationLabel} htmlFor="location">
           Location
         </label>
         <div className={s.inputIconBox}>
-          <input
-            type="text"
-            name="location"
-            placeholder="Kyiv, Ukraine"
-            className={s.locationInput}
-          />
+          <div className={s.errorMessageBox}>
+            <input
+              type="text"
+              name="location"
+              placeholder="Ukraine, Kyiv"
+              value={values.location}
+              onBlur={handleBlur}
+              onChange={handleChange}
+              className={`${s.locationInput}  ${
+                touched.location && errors.location && s.errorInput
+              }`}
+            />
+            <ErrorMessage
+              errorMessage={errors.location}
+              touched={touched.location}
+              className="locationErrMess"
+            />
+          </div>
           <Icon id="map-pin" className="location-icon" />
 
           <p className={s.filtersText}>Filters</p>
@@ -29,23 +139,27 @@ const Filter = () => {
               <span className={s.checkboxText}>AC</span>
               <input
                 type="checkbox"
-                // name="equipment"
+                name="equipment"
                 className={s.visuallyHidden}
                 id="ac"
-                // onChange={handleChange}
+                onBlur={handleBlur}
+                onChange={handleChange}
+                value="airConditioner"
               />
               <span className={s.checkmark}></span>
             </label>
 
             <label htmlFor="gearbox" className={s.customCheckbox}>
               <Icon id="gearbox" size="32" />
-              <span className={s.checkboxText}>AC</span>
+              <span className={s.checkboxText}>Automatic</span>
               <input
                 type="checkbox"
-                // name="equipment"
+                name="equipment"
                 className={s.visuallyHidden}
                 id="gearbox"
-                // onChange={handleChange}
+                onBlur={handleBlur}
+                onChange={handleChange}
+                value="automatic"
               />
               <span className={s.checkmark}></span>
             </label>
@@ -55,10 +169,12 @@ const Filter = () => {
               <span className={s.checkboxText}>Kitchen</span>
               <input
                 type="checkbox"
-                // name="equipment"
+                name="equipment"
                 className={s.visuallyHidden}
                 id="food"
-                // onChange={handleChange}
+                onBlur={handleBlur}
+                onChange={handleChange}
+                value="kitchen"
               />
               <span className={s.checkmark}></span>
             </label>
@@ -69,11 +185,11 @@ const Filter = () => {
               <input
                 type="checkbox"
                 name="equipment"
-                //   name??
                 className={s.visuallyHidden}
                 id="tv"
-                // value="tv"
-                // onChange={handleChange}
+                onBlur={handleBlur}
+                onChange={handleChange}
+                value="TV"
               />
               <span className={s.checkmark}></span>
             </label>
@@ -86,7 +202,9 @@ const Filter = () => {
                 name="equipment"
                 className={s.visuallyHidden}
                 id="shower"
-                // onChange={handleChange}
+                onBlur={handleBlur}
+                onChange={handleChange}
+                value="shower"
               />
               <span className={s.checkmark}></span>
             </label>
@@ -99,10 +217,12 @@ const Filter = () => {
               <span className={s.checkboxText}>Van</span>
               <input
                 type="radio"
-                name="vehicle"
+                name="type"
                 className={s.visuallyHidden}
                 id="van"
-                // onChange={handleChange}
+                onBlur={handleBlur}
+                onChange={handleChange}
+                value="panelTruck"
               />
               <span className={s.checkmark}></span>
             </label>
@@ -112,10 +232,12 @@ const Filter = () => {
               <span className={s.checkboxText}>Fully integrated</span>
               <input
                 type="radio"
-                name="vehicle"
+                name="type"
                 className={s.visuallyHidden}
                 id="fully"
-                // onChange={handleChange}
+                onBlur={handleBlur}
+                onChange={handleChange}
+                value="fullyIntegrated"
               />
               <span className={s.checkmark}></span>
             </label>
@@ -125,20 +247,41 @@ const Filter = () => {
               <span className={s.checkboxText}>Alcove</span>
               <input
                 type="radio"
-                name="vehicle"
+                name="type"
                 className={s.visuallyHidden}
                 id="alcove"
-                // onChange={handleChange}
+                onBlur={handleBlur}
+                onChange={handleChange}
+                value="alcove"
               />
               <span className={s.checkmark}></span>
             </label>
           </div>
-          <Button title="Search" className="filterSearchBtn" />
+          <div className={s.btnsBox}>
+            <Button
+              title="Search"
+              className="filterSearchBtn"
+              type="submit"
+              // loading={true}
+              loading={isSubmitting}
+            />
+            <Button
+              title="Reset"
+              className="filterResetBtn"
+              type="button"
+              onClick={handleReset}
+              // loading={true}
+              loading={isLoading && !isSubmitting}
+              disabled={resetDisabled}
+              loaderColor="rgba(16, 24, 40, 0.6)"
+            />
+          </div>
         </div>
       </form>
     </div>
   );
 };
+//
 
 export default Filter;
 

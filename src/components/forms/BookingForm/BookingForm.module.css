@@ -25,6 +25,10 @@
   color: var(--primary-gray);
 }
 
+.input::placeholder {
+  color: var(--placeholder);
+}
+
 .inputWrapper {
   position: relative;
   padding-bottom: 24px;

@@ -60,7 +60,7 @@ const CardItem = ({ advert, isFavoritesPage }) => {
 
   const formatedPrice = formatPrice(price);
   const countedReviews = countReviews(reviews);
-  const formatedLocation = formatLocation(location);
+  // const formatedLocation = formatLocation(location);
 
   return (
     <>
@@ -95,7 +95,7 @@ const CardItem = ({ advert, isFavoritesPage }) => {
               {rating}({countedReviews} Reviews)
             </p>
             <Icon id={'map-pin'} size="16" />
-            <p className={s.locationText}>{formatedLocation}</p>
+            <p className={s.locationText}>{location}</p>
           </div>
 
           <p className={s.detailsText}>{description}</p>

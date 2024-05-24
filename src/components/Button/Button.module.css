@@ -48,8 +48,27 @@
 .filterSearchBtn {
   margin: 0;
   background-color: var(--secondary-red);
+  /* width: 174px; */
+  height: 56px;
 }
 
 .filterSearchBtn:is(:hover, :focus) {
   background-color: var(--hover-red);
+}
+
+.filterResetBtn {
+  margin: 0;
+  background-color: var(--secondary-light-grey);
+  color: var(--primary-dark);
+  /* width: auto; */
+  /* padding-right: 30px;
+  padding-left: 30px; */
+}
+
+.filterResetBtn:is(:hover, :focus) {
+  background-color: var(--filters-border-bottom);
+}
+
+.filterResetBtn:disabled {
+  cursor: not-allowed;
 }

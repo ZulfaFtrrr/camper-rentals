@@ -60,7 +60,7 @@ const CatalogPage = () => {
     <section className={s.catalog}>
       <Container className="catalog-page-container">
         <div className={s.filterCardsWrapper}>
-          <Filter />
+          <Filter page={page} />
           <div>
             <Cards adverts={adverts} advertsListRef={advertsListRef} />
             {isLoadMore && !isLoading && (
