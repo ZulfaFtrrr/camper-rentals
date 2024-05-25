@@ -37,15 +37,15 @@ export const fetchFilteredAdverts = createAsyncThunk(
   }
 );
 
-export const resetFilteredAdverts = createAsyncThunk(
-  'adverts/resetFilteredAdverts',
-  async (page, thunkApi) => {
-    try {
-      const adverts = await apiGetAdverts(page); //
-      return adverts;
-    } catch (error) {
-      toast.error(error?.message);
-      return thunkApi.rejectWithValue(error.message);
-    }
-  }
-);
+// export const resetFilteredAdverts = createAsyncThunk(
+//   'adverts/resetFilteredAdverts',
+//   async (page, thunkApi) => {
+//     try {
+//       const adverts = await apiGetAdverts(page); //
+//       return adverts;
+//     } catch (error) {
+//       toast.error(error?.message);
+//       return thunkApi.rejectWithValue(error.message);
+//     }
+//   }
+// );

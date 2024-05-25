@@ -31,3 +31,18 @@ export const selectIsLoadMore = createSelector(
   selectAdverts,
   (adverts) => adverts.isLoadMore
 );
+
+export const selectFilteredAdverts = createSelector(
+  selectAdverts,
+  (adverts) => adverts.filteredAdverts
+);
+
+export const selectFiltersPage = createSelector(
+  selectAdverts,
+  (adverts) => adverts.filtersPage
+);
+
+export const selectFilters = createSelector(
+  selectAdverts,
+  (adverts) => adverts.filters
+);

@@ -2,14 +2,17 @@ import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 import {
   fetchAdverts,
   fetchFilteredAdverts,
-  resetFilteredAdverts,
+  // resetFilteredAdverts,
 } from './advertsOperations.js';
 import { limit } from '../../helpers/constants.js';
 
 const initialState = {
   adverts: [],
+  filteredAdverts: [],
   favorites: [],
   page: 1,
+  filtersPage: 1,
+  filters: {},
   isLoadMore: true,
   isLoading: false,
   error: null,
@@ -21,6 +24,7 @@ export const advertsSlice = createSlice({
   reducers: {
     //----------------favorites
     addToFavorites: (state, action) => {
+      // console.log(action.payload);
       state.favorites = [...state.favorites, action.payload];
     },
     removeFromFavorites: (state, action) => {
@@ -31,7 +35,9 @@ export const advertsSlice = createSlice({
     },
     //----------------page
     increasePage: (state) => {
-      state.page = state.page + 1;
+      if (state.filteredAdverts.length > 0)
+        state.filtersPage = state.filtersPage + 1; // ??
+      else state.page = state.page + 1;
     },
     // ?????
     hideLoadMoreFavs: (state) => {
@@ -40,6 +46,8 @@ export const advertsSlice = createSlice({
     hideLoadMore: (state) => {
       state.isLoadMore = false;
     },
+
+    //+
     resetAdverts: (state) => {
       state.page = 1;
       state.adverts = [];
@@ -55,9 +63,16 @@ export const advertsSlice = createSlice({
       if (state.favorites.length <= limit) state.isLoadMore = false;
       else state.isLoadMore = true;
     },
-    // resetFiltered: (state) => {
-    //   state.page;
-    // },
+
+    resetFilteredAdverts: (state) => {
+      state.filtersPage = 1;
+      state.filteredAdverts = [];
+      state.isLoadMore = true; //
+    },
+
+    addFilters: (state, action) => {
+      state.filters = action.payload;
+    },
   },
 
   extraReducers: (builder) =>
@@ -76,26 +91,31 @@ export const advertsSlice = createSlice({
 
       .addCase(fetchFilteredAdverts.fulfilled, (state, action) => {
         state.isLoading = false;
-        console.log(action.payload, 'PAYLOAD');
-        state.adverts = action.payload;
+        // state.filters =
+        console.log(action.payload, 'PAYLOAD FILTER ADVERTS');
+        // state.adverts = action.payload;
+
+        state.filteredAdverts = [...state.filteredAdverts, ...action.payload];
+        state.adverts = [];
+
         if (action.payload.length < limit) state.isLoadMore = false;
         else state.isLoadMore = true;
-        //якщо пошук скинути на пусте поле тоді як лоад мор встановлювати? - to make independent action for toggling isLoadMore -
       })
 
-      .addCase(resetFilteredAdverts.fulfilled, (state, action) => {
-        state.page = 1;
-        state.isLoading = false;
-        state.adverts = action.payload; //
-        state.isLoadMore = true;
-        // if (action.payload.length < limit) state.isLoadMore = false;
-      })
+      // .addCase(resetFilteredAdverts.fulfilled, (state, action) => {
+      //   // state.page = 1;
+      //   state.filtersPage = 1;
+      //   state.isLoading = false;
+      //   state.adverts = action.payload; //
+      //   state.isLoadMore = true;
+      //   // if (action.payload.length < limit) state.isLoadMore = false;
+      // })
 
       .addMatcher(
         isAnyOf(
           fetchAdverts.pending,
-          fetchFilteredAdverts.pending,
-          resetFilteredAdverts.pending
+          fetchFilteredAdverts.pending
+          // resetFilteredAdverts.pending
         ),
         (state) => {
           state.isLoading = true;
@@ -105,8 +125,8 @@ export const advertsSlice = createSlice({
       .addMatcher(
         isAnyOf(
           fetchAdverts.rejected,
-          fetchFilteredAdverts.rejected,
-          resetFilteredAdverts.rejected
+          fetchFilteredAdverts.rejected
+          // resetFilteredAdverts.rejected
         ),
         (state, action) => {
           state.isLoading = false;
@@ -124,4 +144,6 @@ export const {
   resetFavsPage,
   resetAdvertsFavs,
   hideLoadMore,
+  resetFilteredAdverts,
+  addFilters,
 } = advertsSlice.actions;

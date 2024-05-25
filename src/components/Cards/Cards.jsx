@@ -40,6 +40,8 @@ const Cards = ({ adverts, advertsListRef }) => {
 
   const visibleAdverts = page * limit;
 
+  const isLoading = useSelector(selectIsLoading);
+
   return (
     <>
       <ul className={s.cardsList} ref={advertsListRef}>
@@ -59,6 +61,10 @@ const Cards = ({ adverts, advertsListRef }) => {
               />
             ))}
       </ul>
+
+      {adverts?.length === 0 && !isLoading && (
+        <div>Sorry, we can`t find anything</div>
+      )}
 
       {/* {isLoadMore && !isLoading && (
         <Button onClick={handleLoadMore}>Load more</Button>

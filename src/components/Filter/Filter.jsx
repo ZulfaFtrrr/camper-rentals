@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useFormik } from 'formik';
 import { toast } from 'react-toastify';
 
@@ -13,14 +13,20 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   fetchAdverts,
   fetchFilteredAdverts,
-  resetFilteredAdverts,
 } from '../../redux/adverts/advertsOperations';
 import { limit } from '../../helpers/constants';
-import { hideLoadMore } from '../../redux/adverts/advertsSlice';
-import { selectIsLoading } from '../../redux/adverts/advertsSelectors';
+import {
+  addFilters,
+  hideLoadMore,
+  resetFilteredAdverts,
+} from '../../redux/adverts/advertsSlice';
+import {
+  selectFilters,
+  selectIsLoading,
+} from '../../redux/adverts/advertsSelectors';
 import { useLocation } from 'react-use';
 
-const Filter = ({ page }) => {
+const Filter = ({ filtersPage }) => {
   const dispatch = useDispatch();
 
   const [resetDisabled, setResetDisabled] = useState(true);
@@ -29,11 +35,12 @@ const Filter = ({ page }) => {
   const location = useLocation();
   const isFavoritesPage = location.pathname === '/camper-rentals/favorites';
 
-  //діспатчити лище якщо змінився стейт ? але юз ефект не доступний
+  const filters = useSelector(selectFilters);
 
-  //   const [filterValues, setFilterValues] = useState({});
+  useEffect(() => {
+    dispatch(resetFilteredAdverts());
+  }, [dispatch, filters]);
 
-  //   const handleChange = (e) => {};
   const {
     values,
     errors,
@@ -47,37 +54,22 @@ const Filter = ({ page }) => {
     setFieldValue,
   } = useFormik({
     initialValues: {
-      location: '', //зробити стейт Киів ?
-      equipment: [], //відповідає бд окрім transmission
-      form: '',
-      //   details:
-
-      //   transmission: 'automatic',
-
-      //   airConditioner: '', //??? якщо задати 0  то знайде ж саме з 0 +  NUMBEr not STRING ?? infinity?)
-      //   kitchen: '',
-      //   TV: '',
-      //   shower: '',
-
-      //   form: '',
-
-      //"panelTruck", "alcove", "fullyIntegrated" - value
+      location: '',
+      equipment: [],
+      type: '',
     },
     validationSchema: filterFormSchema,
     onSubmit: () => {
       if (isFavoritesPage) {
         toast.success('Favs filtering in process');
-
         return setSubmitting(false);
       } //temporary
       //   resetForm();
       //   setSubmitting(false);
-      console.log(values);
 
-      const filters = { ...values, page };
-      // setFilterValues(values)
+      const filters = { ...values, filtersPage };
 
-      // if (filterValues === prevState)
+      dispatch(addFilters(values));
       dispatch(fetchFilteredAdverts(filters))
         .unwrap()
         .then((adverts) => {
@@ -93,13 +85,15 @@ const Filter = ({ page }) => {
   });
 
   const handleReset = () => {
-    dispatch(resetFilteredAdverts(1))
+    dispatch(resetFilteredAdverts());
+
+    toast.success('Success reset');
+    setResetDisabled(true);
+    resetForm();
+
+    dispatch(fetchAdverts(1))
       .unwrap()
-      .then(() => {
-        toast.success('Success reset');
-        setResetDisabled(true);
-        resetForm();
-      })
+      .then()
       .catch((error) => console.error(error));
   };
 
@@ -284,5 +278,3 @@ const Filter = ({ page }) => {
 //
 
 export default Filter;
-
-//зробити ВСІ можливі чекбокси чи тільки ті які на макеті ?
