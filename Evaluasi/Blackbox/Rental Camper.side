@@ -1,0 +1,383 @@
+{
+  "id": "dc9e68fb-d82a-4bee-8ff6-b598b2997ad0",
+  "version": "2.0",
+  "name": "Rental Camper",
+  "url": "https://ubiquitous-umbrella-5g4v5g5vr9493ppwq-5173.app.github.dev",
+  "tests": [{
+    "id": "141f7df3-7b52-4f7e-9803-be34b9784004",
+    "name": "Selenium Rental",
+    "commands": [{
+      "id": "72ebd7bb-f155-4fd4-ad84-ee384c47e790",
+      "comment": "",
+      "command": "open",
+      "target": "/camper-rentals",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "9a23da21-cea9-4b7b-959b-b190c5f02675",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1550x830",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "6a8753e1-c5ad-4e13-99f3-6f7332f8bf74",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Go to catalog",
+      "targets": [
+        ["linkText=Go to catalog", "linkText"],
+        ["css=.\\_heroBtn_8k9ot_56", "css:finder"],
+        ["xpath=//a[contains(text(),'Go to catalog')]", "xpath:link"],
+        ["xpath=//div[@id='root']/main/section/div/a", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, '/camper-rentals/catalog')])[2]", "xpath:href"],
+        ["xpath=//section/div/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Go to catalog')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "2fb313ae-3065-47dc-bd86-e46888e74e93",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "linkText=Go to catalog",
+      "targets": [
+        ["linkText=Go to catalog", "linkText"],
+        ["css=.\\_heroBtn_8k9ot_56", "css:finder"],
+        ["xpath=//a[contains(text(),'Go to catalog')]", "xpath:link"],
+        ["xpath=//div[@id='root']/main/section/div/a", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, '/camper-rentals/catalog')])[2]", "xpath:href"],
+        ["xpath=//section/div/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Go to catalog')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "74e8f941-5941-443e-8b91-810ccdeddd4f",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "css=.\\_heroBtn_8k9ot_56",
+      "targets": [
+        ["css=.\\_heroBtn_8k9ot_56", "css:finder"],
+        ["xpath=//a[contains(text(),'Go to catalog')]", "xpath:link"],
+        ["xpath=//div[@id='root']/main/section/div/a", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, '/camper-rentals/catalog')])[2]", "xpath:href"],
+        ["xpath=//section/div/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Go to catalog')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "9d02722b-9e83-4e6f-8720-7c9796492b61",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Favorites",
+      "targets": [
+        ["linkText=Favorites", "linkText"],
+        ["css=.\\_navLink_1fntn_1:nth-child(3)", "css:finder"],
+        ["xpath=//a[contains(text(),'Favorites')]", "xpath:link"],
+        ["xpath=//div[@id='root']/header/div/div/div/a[3]", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/camper-rentals/favorites')]", "xpath:href"],
+        ["xpath=//a[3]", "xpath:position"],
+        ["xpath=//a[contains(.,'Favorites')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "e451fbf6-50a0-4b50-9095-de485e5e52eb",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "linkText=Favorites",
+      "targets": [
+        ["linkText=Favorites", "linkText"],
+        ["css=.\\_navLink_1fntn_1:nth-child(3)", "css:finder"],
+        ["xpath=//a[contains(text(),'Favorites')]", "xpath:link"],
+        ["xpath=//div[@id='root']/header/div/div/div/a[3]", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/camper-rentals/favorites')]", "xpath:href"],
+        ["xpath=//a[3]", "xpath:position"],
+        ["xpath=//a[contains(.,'Favorites')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "cc315301-8408-45fb-be2b-1827995d9eeb",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "linkText=Favorites",
+      "targets": [
+        ["linkText=Favorites", "linkText"],
+        ["css=.\\_active_1fntn_10", "css:finder"],
+        ["xpath=//a[contains(text(),'Favorites')]", "xpath:link"],
+        ["xpath=//div[@id='root']/header/div/div/div/a[3]", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/camper-rentals/favorites')]", "xpath:href"],
+        ["xpath=//a[3]", "xpath:position"],
+        ["xpath=//a[contains(.,'Favorites')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "026c7d94-1792-4390-bcae-bd971e124943",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Catalog",
+      "targets": [
+        ["linkText=Catalog", "linkText"],
+        ["css=.\\_navLink_1fntn_1:nth-child(2)", "css:finder"],
+        ["xpath=//a[contains(text(),'Catalog')]", "xpath:link"],
+        ["xpath=//div[@id='root']/header/div/div/div/a[2]", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/camper-rentals/catalog')]", "xpath:href"],
+        ["xpath=//a[2]", "xpath:position"],
+        ["xpath=//a[contains(.,'Catalog')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "0ed44aec-bd62-4503-a171-9b2751f184c1",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "linkText=Catalog",
+      "targets": [
+        ["linkText=Catalog", "linkText"],
+        ["css=.\\_navLink_1fntn_1:nth-child(2)", "css:finder"],
+        ["xpath=//a[contains(text(),'Catalog')]", "xpath:link"],
+        ["xpath=//div[@id='root']/header/div/div/div/a[2]", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/camper-rentals/catalog')]", "xpath:href"],
+        ["xpath=//a[2]", "xpath:position"],
+        ["xpath=//a[contains(.,'Catalog')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "3270aceb-8dfd-4304-82eb-3146aa72cf92",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "linkText=Catalog",
+      "targets": [
+        ["linkText=Catalog", "linkText"],
+        ["css=.\\_active_1fntn_10", "css:finder"],
+        ["xpath=//a[contains(text(),'Catalog')]", "xpath:link"],
+        ["xpath=//div[@id='root']/header/div/div/div/a[2]", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/camper-rentals/catalog')]", "xpath:href"],
+        ["xpath=//a[2]", "xpath:position"],
+        ["xpath=//a[contains(.,'Catalog')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "de1c2f9f-35d2-4272-9d3b-fcea792407b3",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Home",
+      "targets": [
+        ["linkText=Home", "linkText"],
+        ["css=.\\_navLink_1fntn_1:nth-child(1)", "css:finder"],
+        ["xpath=//a[contains(text(),'Home')]", "xpath:link"],
+        ["xpath=//div[@id='root']/header/div/div/div/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/camper-rentals')]", "xpath:href"],
+        ["xpath=//a", "xpath:position"],
+        ["xpath=//a[contains(.,'Home')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "c8e2ee0b-a578-46eb-bb26-5fc26f5a75d8",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Catalog",
+      "targets": [
+        ["linkText=Catalog", "linkText"],
+        ["css=.\\_navLink_1fntn_1:nth-child(2)", "css:finder"],
+        ["xpath=//a[contains(text(),'Catalog')]", "xpath:link"],
+        ["xpath=//div[@id='root']/header/div/div/div/a[2]", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/camper-rentals/catalog')]", "xpath:href"],
+        ["xpath=//a[2]", "xpath:position"],
+        ["xpath=//a[contains(.,'Catalog')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "a56b313c-d247-4649-8a41-6b525f69f00c",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Home",
+      "targets": [
+        ["linkText=Home", "linkText"],
+        ["css=.\\_navLink_1fntn_1:nth-child(1)", "css:finder"],
+        ["xpath=//a[contains(text(),'Home')]", "xpath:link"],
+        ["xpath=//div[@id='root']/header/div/div/div/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/camper-rentals')]", "xpath:href"],
+        ["xpath=//a", "xpath:position"],
+        ["xpath=//a[contains(.,'Home')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "75a13408-94ce-4a8d-b23c-346b6bcbb587",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Catalog",
+      "targets": [
+        ["linkText=Catalog", "linkText"],
+        ["css=.\\_navLink_1fntn_1:nth-child(2)", "css:finder"],
+        ["xpath=//a[contains(text(),'Catalog')]", "xpath:link"],
+        ["xpath=//div[@id='root']/header/div/div/div/a[2]", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/camper-rentals/catalog')]", "xpath:href"],
+        ["xpath=//a[2]", "xpath:position"],
+        ["xpath=//a[contains(.,'Catalog')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "1127dbac-571c-43ba-ac73-4f218606025a",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "linkText=Catalog",
+      "targets": [
+        ["linkText=Catalog", "linkText"],
+        ["css=.\\_navLink_1fntn_1:nth-child(2)", "css:finder"],
+        ["xpath=//a[contains(text(),'Catalog')]", "xpath:link"],
+        ["xpath=//div[@id='root']/header/div/div/div/a[2]", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/camper-rentals/catalog')]", "xpath:href"],
+        ["xpath=//a[2]", "xpath:position"],
+        ["xpath=//a[contains(.,'Catalog')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "e64f5875-bf93-492b-a328-08566f418a79",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "linkText=Catalog",
+      "targets": [
+        ["linkText=Catalog", "linkText"],
+        ["css=.\\_active_1fntn_10", "css:finder"],
+        ["xpath=//a[contains(text(),'Catalog')]", "xpath:link"],
+        ["xpath=//div[@id='root']/header/div/div/div/a[2]", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/camper-rentals/catalog')]", "xpath:href"],
+        ["xpath=//a[2]", "xpath:position"],
+        ["xpath=//a[contains(.,'Catalog')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "91aa4037-6439-4ad2-a866-1286eff60045",
+      "comment": "",
+      "command": "click",
+      "target": "css=.\\_cardsItem_1nzcu_1:nth-child(1) .\\_priceHeartBox_1nzcu_47",
+      "targets": [
+        ["css=.\\_cardsItem_1nzcu_1:nth-child(1) .\\_priceHeartBox_1nzcu_47", "css:finder"],
+        ["xpath=//div[@id='root']/main/section/div/div/div[2]/ul/li/div[2]/div/div", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "abd1bb58-6f50-4ad4-908b-78ec1e266ffe",
+      "comment": "",
+      "command": "click",
+      "target": "css=.\\_cardsItem_1nzcu_1:nth-child(1) .\\_titlePriceIconBox_1nzcu_40 svg",
+      "targets": [
+        ["css=.\\_cardsItem_1nzcu_1:nth-child(1) .\\_titlePriceIconBox_1nzcu_40 svg", "css:finder"]
+      ],
+      "value": ""
+    }, {
+      "id": "864d9e1b-f68e-41de-926d-7584622776f9",
+      "comment": "",
+      "command": "click",
+      "target": "css=.\\_cardsItem_1nzcu_1:nth-child(4) .\\_titlePriceIconBox_1nzcu_40 use",
+      "targets": [
+        ["css=.\\_cardsItem_1nzcu_1:nth-child(4) .\\_titlePriceIconBox_1nzcu_40 use", "css:finder"]
+      ],
+      "value": ""
+    }, {
+      "id": "81314240-171a-4e56-be3e-c15af3e50a13",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Favorites",
+      "targets": [
+        ["linkText=Favorites", "linkText"],
+        ["css=.\\_navLink_1fntn_1:nth-child(3)", "css:finder"],
+        ["xpath=//a[contains(text(),'Favorites')]", "xpath:link"],
+        ["xpath=//div[@id='root']/header/div/div/div/a[3]", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/camper-rentals/favorites')]", "xpath:href"],
+        ["xpath=//a[3]", "xpath:position"],
+        ["xpath=//a[contains(.,'Favorites')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "f56a411b-b76f-4631-a2c9-6173de2b95bb",
+      "comment": "",
+      "command": "click",
+      "target": "css=.\\_cardsItem_1nzcu_1:nth-child(1) .\\_button_11ql7_1",
+      "targets": [
+        ["css=.\\_cardsItem_1nzcu_1:nth-child(1) .\\_button_11ql7_1", "css:finder"],
+        ["xpath=(//button[@type='button'])[3]", "xpath:attributes"],
+        ["xpath=//div[@id='root']/main/section/div/div/div[2]/ul/li/div[2]/button", "xpath:idRelative"],
+        ["xpath=//div[2]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Show more')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "51caff17-1071-4cf7-afbc-08ecd09f99c2",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=.\\_cardsItem_1nzcu_1:nth-child(1) .\\_button_11ql7_1",
+      "targets": [
+        ["css=.\\_cardsItem_1nzcu_1:nth-child(1) .\\_button_11ql7_1", "css:finder"],
+        ["xpath=(//button[@type='button'])[3]", "xpath:attributes"],
+        ["xpath=//div[@id='root']/main/section/div/div/div[2]/ul/li/div[2]/button", "xpath:idRelative"],
+        ["xpath=//div[2]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Show more')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "9e2b6100-f0a8-4387-b059-1bde301fbb0b",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "css=.\\_cardsItem_1nzcu_1:nth-child(1) .\\_button_11ql7_1",
+      "targets": [
+        ["css=.\\_cardsItem_1nzcu_1:nth-child(1) .\\_button_11ql7_1", "css:finder"],
+        ["xpath=(//button[@type='button'])[4]", "xpath:attributes"],
+        ["xpath=//div[@id='root']/main/section/div/div/div[2]/ul/li/div[2]/button", "xpath:idRelative"],
+        ["xpath=//div[2]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Show more')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "1103bb30-ec8f-4ecb-b005-c136d0e270cb",
+      "comment": "",
+      "command": "click",
+      "target": "css=.\\_backdrop_1k5zh_1",
+      "targets": [
+        ["css=.\\_backdrop_1k5zh_1", "css:finder"],
+        ["xpath=//div[@id='modal-root']/div", "xpath:idRelative"],
+        ["xpath=//div/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "73a01ff4-0687-4f13-893c-2ea3482358a1",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Catalog",
+      "targets": [
+        ["linkText=Catalog", "linkText"],
+        ["css=.\\_navLink_1fntn_1:nth-child(2)", "css:finder"],
+        ["xpath=//a[contains(text(),'Catalog')]", "xpath:link"],
+        ["xpath=//div[@id='root']/header/div/div/div/a[2]", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/camper-rentals/catalog')]", "xpath:href"],
+        ["xpath=//a[2]", "xpath:position"],
+        ["xpath=//a[contains(.,'Catalog')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "e67f1438-9948-4b5e-bb95-864c7cfca2f7",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Home",
+      "targets": [
+        ["linkText=Home", "linkText"],
+        ["css=.\\_navLink_1fntn_1:nth-child(1)", "css:finder"],
+        ["xpath=//a[contains(text(),'Home')]", "xpath:link"],
+        ["xpath=//div[@id='root']/header/div/div/div/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/camper-rentals')]", "xpath:href"],
+        ["xpath=//a", "xpath:position"],
+        ["xpath=//a[contains(.,'Home')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "8517908d-7961-481a-b8cd-56da7c0ebfed",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["141f7df3-7b52-4f7e-9803-be34b9784004"]
+  }],
+  "urls": ["https://ubiquitous-umbrella-5g4v5g5vr9493ppwq-5173.app.github.dev/"],
+  "plugins": []
+}
